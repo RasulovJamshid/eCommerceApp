@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { Text, View,Switch ,Dimensions,Alert,StyleSheet} from 'react-native';
+import { Text, View,Switch ,Dimensions,Alert,StyleSheet,ScrollView} from 'react-native';
 import { Button } from "react-native-paper";
 import { createStackNavigator } from "@react-navigation/stack";
 import SettingsHeader from "./childComponets/Header.js";
@@ -30,13 +30,13 @@ const [enabled,setEnabled]=useState(false);
 
 function Settings() {
     return (
-      <View style={{ flex: 1, margin:15,}}>
+      <ScrollView style={{ flex: 1, margin:15,}}>
         <Text style={{fontSize:20,fontWeight:"700"}}>Your App Settings!</Text>
         <SwitchPart title="Notifications" content="Recive notifications on latest offers and store updates"/>
         <SwitchPart title="Popups" content="Disable all popups and adverts from third partyy vendors"/>
         <SwitchPart title="Order History" content="Keep your order history on the app unless manually removed"/>
-        <Button  color="#fff" onPress={()=>Alert.alert("Updated")}  style={{borderRadius:20,backgroundColor:"#ff00ae"}} >Update Settings</Button>
-      </View>
+        <Button  color="#fff" onPress={()=>Alert.alert("Updated")}  style={styles.button} >Update Settings</Button>
+      </ScrollView>
     );
   }
 
@@ -64,7 +64,9 @@ const styles=StyleSheet.create({
   container:{
     flex:1,
     flexDirection:"column",
-    margin:15
+    marginVertical:20,
+    margin:10
+
   },
   title:{
     fontSize:20,
@@ -87,6 +89,10 @@ const styles=StyleSheet.create({
     alignSelf:"flex-start",
     flexGrow:1,
     marginHorizontal:5
+  },
+  button:{
+    borderRadius:20,
+    backgroundColor:"#ff00ae",
   }
 })
 

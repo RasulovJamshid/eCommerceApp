@@ -18,16 +18,15 @@ const list=[
 function Account() {
     return (
       <ScrollView style={{flex:1}}>
-      <View style={{ flex: 1,flexDirection:"row", justifyContent: 'flex-start',margin:10 }}>
+      <View style={styles.avatarContainer}>
         <Avatar.Text size={75} style={{backgroundColor:"#ff00ae"}} label="JD" /> 
         <View style={{margin:15}}>
-          <Text style={{fontSize:20,fontWeight:"700"}}>Jameson Donn</Text>
-          <Text style={{fontSize:14}}>jamesondonn@gmail.com</Text>
+          <Text style={styles.avatarTitle}>Jameson Donn</Text>
+          <Text style={styles.avatarSubtitle}>jamesondonn@gmail.com</Text>
         </View>
       </View>
         <View style={{flexGrow:1}}>
-          
-            {list.map(i=>(
+           {list.map(i=>(
              <List.Item
              style={{margin:5}}
              onPress={()=>console.log("sa")}
@@ -36,8 +35,7 @@ function Account() {
              right={props => <List.Icon {...props} icon="chevron-right" />}
             />
             ))}
-          
-        </View>
+       </View>
       </ScrollView>
     );
   }
@@ -64,6 +62,19 @@ function AccountScreen() {
 const styles=StyleSheet.create({
   icon:{
     backgroundColor:"red"
+  },
+  avatarContainer:{
+    flex: 1,
+    flexDirection:"row", 
+    justifyContent: 'flex-start',
+    margin:10
+  },
+  avatarTitle:{
+    fontSize:20,
+    fontWeight:"700"
+  },
+  avatarSubtitle:{
+    fontSize:14
   }
 })
   

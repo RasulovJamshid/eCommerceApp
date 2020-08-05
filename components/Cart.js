@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import CartHeader from "./childComponets/Header.js";
-
+import  CartMain  from "./cartComponents/CartMain.js";
 
 function Cart() {
     return (
@@ -25,13 +25,36 @@ function CartScreen() {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
+        cardStyle:{
+          backgroundColor:"#fff"
+        }
       }}
     >
-      <CartStack.Screen
-        name="Home"
+        <CartStack.Screen
+          name="CartMain"
+          component={CartMain}
+          options={{header:CartHeader }}
+        />
+        <CartStack.Screen
+        name="CheckoutOne"
         component={Cart}
         options={{header:CartHeader }}
-      />
+        />
+        <CartStack.Screen
+        name="CheckoutTwo"
+        component={Cart}
+        options={{header:CartHeader }}
+         />
+        <CartStack.Screen
+        name="CheckoutThree"
+        component={Cart}
+        options={{header:CartHeader }}
+       />
+        <CartStack.Screen
+         name="Accepted"
+         component={Cart}       
+         options={{header:CartHeader }}              
+              />
     </CartStack.Navigator>
   );
 }
