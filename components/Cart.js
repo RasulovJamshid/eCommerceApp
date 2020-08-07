@@ -3,6 +3,9 @@ import { Text, View } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import CartHeader from "./childComponets/Header.js";
 import  CartMain  from "./cartComponents/CartMain.js";
+import  CheckoutOne  from "./cartComponents/CheckoutOne.js";
+import  CheckoutTwo  from "./cartComponents/CheckoutTwo.js";
+
 
 function Cart() {
     return (
@@ -27,8 +30,23 @@ function CartScreen() {
         },
         cardStyle:{
           backgroundColor:"#fff"
+        },
+        
+        transitionSpec:{
+          open:{
+            animation: 'timing',
+            config: {
+              duration:10,
+            },
+          },
+          close:{
+            animation: 'timing',
+            config: {
+              duration:10,
+            },
+          },
         }
-      }}
+        }}
     >
         <CartStack.Screen
           name="CartMain"
@@ -37,13 +55,13 @@ function CartScreen() {
         />
         <CartStack.Screen
         name="CheckoutOne"
-        component={Cart}
-        options={{header:CartHeader }}
+        component={CheckoutOne}
+        options={{header:CartHeader,animationTypeForReplace:"pop" }}
         />
         <CartStack.Screen
         name="CheckoutTwo"
-        component={Cart}
-        options={{header:CartHeader }}
+        component={CheckoutTwo}
+        options={{header:CartHeader,animationTypeForReplace:"pop" }}
          />
         <CartStack.Screen
         name="CheckoutThree"
