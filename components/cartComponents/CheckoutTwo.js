@@ -7,7 +7,7 @@ import Stepper from "../childComponets/Stepper";
 // const WIDTH=Dimensions.get("window").width-20;
 
 
-const CheckoutOne =(props)=>{
+const CheckoutTwo =(props)=>{
     const [val,setValue]=useState(true);
     const [pay,setPay]=useState(1);
     return(
@@ -88,4 +88,4 @@ const styles =StyleSheet.create({
     }
 });
 
-export default CheckoutOne;
+export default CheckoutTwo;

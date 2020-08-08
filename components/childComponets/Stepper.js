@@ -30,8 +30,8 @@ const styles =StyleSheet.create({
     },
     stepOut:{
         borderColor:"gray",
-        width:35,
-        height:35,
+        width:30,
+        height:30,
         borderRadius:25,
         borderWidth:1
         ,alignItems:'center',
@@ -43,8 +43,8 @@ const styles =StyleSheet.create({
         borderBottomWidth: 2
     },
     stepIn:{
-        width:25,
-        height:25,
+        width:20,
+        height:20,
         borderRadius:15,
         backgroundColor:"#ff00ae"
     },

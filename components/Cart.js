@@ -5,6 +5,8 @@ import CartHeader from "./childComponets/Header.js";
 import  CartMain  from "./cartComponents/CartMain.js";
 import  CheckoutOne  from "./cartComponents/CheckoutOne.js";
 import  CheckoutTwo  from "./cartComponents/CheckoutTwo.js";
+import  CheckoutThree  from "./cartComponents/CheckoutThree.js";
+import  Accepted  from "./cartComponents/Accepted.js";
 
 
 function Cart() {
@@ -56,21 +58,21 @@ function CartScreen() {
         <CartStack.Screen
         name="CheckoutOne"
         component={CheckoutOne}
-        options={{header:CartHeader,animationTypeForReplace:"pop" }}
+        options={{header:CartHeader }}
         />
         <CartStack.Screen
         name="CheckoutTwo"
         component={CheckoutTwo}
-        options={{header:CartHeader,animationTypeForReplace:"pop" }}
+        options={{header:CartHeader }}
          />
         <CartStack.Screen
         name="CheckoutThree"
-        component={Cart}
+        component={CheckoutThree}
         options={{header:CartHeader }}
        />
         <CartStack.Screen
          name="Accepted"
-         component={Cart}       
+         component={Accepted}       
          options={{header:CartHeader }}              
               />
     </CartStack.Navigator>
