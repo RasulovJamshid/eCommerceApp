@@ -7,7 +7,7 @@ import Home from "./Home.js";
 import Account from "./Account.js";
 import Settings from "./Settings.js";
 import Cart from "./Cart.js";
-
+import colors from "../src/configs/colors.js";
 const Tab = createMaterialBottomTabNavigator();
 
 //f0edf6
@@ -19,9 +19,9 @@ export default class TabNavigation extends React.Component{
         return(
             <Tab.Navigator                    
                     initialRouteName="Home"
-                    activeColor="#ff00ae"
-                    inactiveColor="#3e2465"
-                    barStyle={{ backgroundColor: '#f0edf6' }}>
+                    activeColor={colors.primary}
+                    inactiveColor="gray"
+                    barStyle={{ backgroundColor: '#fff' }}>
 
                 <Tab.Screen name="Home" component={Home} 
                         options={{

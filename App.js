@@ -1,31 +1,22 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-// import {createStackNavigator} from "@react-navigation/stack"
 import { NavigationContainer } from '@react-navigation/native';
-import TabNavigation from "./components/TabNavigation.js";
-// import Login from "./components/Authentication/Login";
-
-
-// const MainNavigation =createStackNavigator();
-
-// const NavigationStack=(props)=>{
-//   return(
-//     <MainNavigation.Navigator initialRouteName="Login" >
-//       <MainNavigation.Screen options={{headerShown:false,cardStyle:{backgroundColor:"#fff"}}} name="Login" component={Login}/>
-//       <MainNavigation.Screen name="TabNavigation" component={TabNavigation}/>     
-//     </MainNavigation.Navigator>
-//   )
-// }
+import {Provider} from "react-redux";
+import store from "./src/store/state";
+import AuthNavigation from "./components/Authentication/AuthNavigation";
 
 class App extends React.Component{
   render(){
   return (
+    <Provider store={store}>
     <NavigationContainer>
-      <TabNavigation/>
+      <AuthNavigation/>
     </NavigationContainer>
+    </Provider>
     );
   }
 }
+
 
 
 export default App;

@@ -3,7 +3,7 @@ import {View,ScrollView,SafeAreaView,FlatList,StyleSheet,StatusBar ,Text,Image,D
 import { Appbar,Button } from 'react-native-paper';
 import Card from "../childComponets/Card";
 import Carousel from "../childComponets/Carousel.js";
-
+// import colors from "../../src/configs/colors.js";
 
 
 const DATA = [
@@ -64,12 +64,15 @@ const Main = ({navigation}) => {
   return (
    <SafeAreaView >
         <FlatList
+        refreshing={false}
+        onRefresh={()=>console.log("refresh")}
+        initialNumToRender={5}
         ListHeaderComponent={<Carousel navigation={navigation}/>}
         numColumns={2}
         data={DATA}
         renderItem={(item)=><Card title={item.title} navigation={navigation}/>}
         keyExtractor={item => item.id}
-      />
+        />
     </SafeAreaView>
     
   );

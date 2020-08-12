@@ -1,6 +1,7 @@
 import React from "react";
 import {ScrollView,View,Text,Image } from "react-native";
 import { Button } from "react-native-paper";
+import colors from "../../src/configs/colors.js";
 
 const Accepted=(props)=>{
     return(
@@ -11,7 +12,7 @@ const Accepted=(props)=>{
             <View style={{flex:1,alignItems:"center"}}>
             <Text style={{fontSize:18,fontWeight:"700",margin:10}}>Order accepted</Text>
             <Text style={{margin:10}}>Your order No.#123-456</Text>
-            <Button color="#fff" style={{margin:10,width:300,padding:5,backgroundColor:"#ff00ae",color:"#fff",borderRadius:25}}>Track order</Button>
+            <Button color="#fff" style={{margin:10,width:300,padding:5,backgroundColor:colors.primary,color:"#fff",borderRadius:25}}>Track order</Button>
             </View>
             
         </View>

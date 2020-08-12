@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel,{Pagination} from 'react-native-snap-carousel';
 import {View,StyleSheet,Image,Dimensions,Text,ScrollView} from "react-native";
 import { Button } from 'react-native-paper';
+import colors from "../../src/configs/colors.js";
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH *0.7);
@@ -77,7 +78,7 @@ export default class MyCarousel extends React.Component {
       return (
           <View style={styles.slide}>
               <Image style={styles.image} source={{uri:item.illustration}}/>
-              <Button style={styles.button} icon="chevron-right"  onPress={() => console.log('Pressed')}>See more </Button>
+              <Button color={colors.primary} style={styles.button} icon="chevron-right"  onPress={() => console.log('Pressed')}>See more </Button>
           </View>
       );
   }
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
      },
      textPr:{
         fontWeight:"700",
-        color:"#9101F8",
+        color:colors.primary,
         fontSize:20,
         flexGrow:1,
         margin:5
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
      textAll:{
         fontWeight:"600",
         fontSize:16,
-        color:"#ff0000",
+        color:"#000",
         margin:5
      },
      item: {

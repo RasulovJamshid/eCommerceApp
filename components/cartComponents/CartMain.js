@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, ScrollView,TextInput,View,StyleSheet } from 'react-native';
 import OrderCart from "../childComponets/OrderCart.js";
 import {Button  } from "react-native-paper";
-import CheckoutOne from './CheckoutOne.js';
+import colors from "../../src/configs/colors.js";
 //b200f1
 function Cart(props) {
     return (
@@ -77,7 +77,7 @@ function Cart(props) {
     vaucherBtn:{
       paddingVertical:8,
       borderRadius:0,
-      backgroundColor:"#b200f1",
+      backgroundColor:colors.primary,
       borderTopRightRadius:30,
       borderBottomRightRadius:30,
       textAlign:"center"
@@ -93,7 +93,7 @@ function Cart(props) {
       fontWeight:"700"
     },
     checkout:{
-      backgroundColor:"#ff00ae",
+      backgroundColor:colors.primary,
       padding:5,
       margin:5,
       borderRadius:25,

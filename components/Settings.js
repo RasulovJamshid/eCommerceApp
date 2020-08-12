@@ -3,6 +3,7 @@ import { Text, View,Switch ,Dimensions,Alert,StyleSheet,ScrollView} from 'react-
 import { Button } from "react-native-paper";
 import { createStackNavigator } from "@react-navigation/stack";
 import SettingsHeader from "./childComponets/Header.js";
+import colors from "../src/configs/colors.js";
 
 const WIDTH = Dimensions.get('window').width-100;
 
@@ -18,7 +19,7 @@ const [enabled,setEnabled]=useState(false);
               <Switch
                   style={styles.switch}
                   trackColor={{ false: "#D3D3D3", true: "#D3D3D3" }}
-                  thumbColor={enabled ? "#ff00ae" : "#f4f3f4"}
+                  thumbColor={enabled ? colors.primary : "#f4f3f4"}
                   ios_backgroundColor="#3e3e3e"
                   onValueChange={()=>setEnabled(!enabled)}
                   value={enabled}
@@ -92,7 +93,7 @@ const styles=StyleSheet.create({
   },
   button:{
     borderRadius:20,
-    backgroundColor:"#ff00ae",
+    backgroundColor:colors.primary,
   }
 })
 

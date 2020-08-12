@@ -3,6 +3,7 @@ import { View,Text,ScrollView ,StyleSheet,Image} from "react-native";
 import { TextInput,Button,IconButton } from "react-native-paper";
 import CheckBox from "@react-native-community/checkbox";
 import Stepper from "../childComponets/Stepper";
+import colors from "../../src/configs/colors.js";
 
 // const WIDTH=Dimensions.get("window").width-20;
 
@@ -28,7 +29,7 @@ const CheckoutTwo =(props)=>{
             <TextInput selectionColor="lightgray" style={styles.input} label="Expiry Date"/>
            
             <View style={styles.checkbox}>
-                    <CheckBox onChange={()=>setValue(!val)} tintColors={{true:"#ff00ae",false:"lightgray"}} value={val}/>
+                    <CheckBox onChange={()=>setValue(!val)} tintColors={{true:colors.primary,false:"lightgray"}} value={val}/>
                     <Text>Save this card settings</Text>
             </View>
            
@@ -62,13 +63,13 @@ const styles =StyleSheet.create({
         margin:5,
         flexGrow:1,
         borderWidth:1,
-        borderColor:"#ff00ae",
+        borderColor:colors.primary,
         borderRadius:20
     },
     next:{
         margin:5,
         flexGrow:1,
-        backgroundColor:"#ff00ae",
+        backgroundColor:colors.primary,
         borderRadius:20
     },
     line:{
@@ -81,7 +82,8 @@ const styles =StyleSheet.create({
         borderWidth:1,borderColor:"lightgray",backgroundColor:"#fff",borderRadius:5
     },
     payEnable:{
-        backgroundColor:"#ff00ae",borderRadius:5
+        backgroundColor:colors.primary,
+        borderRadius:5
     },
     payContainer:{
         flexDirection:"row",justifyContent:"space-between",margin:15

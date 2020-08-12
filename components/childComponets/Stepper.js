@@ -1,5 +1,6 @@
 import React from "react";
 import { View,StyleSheet} from "react-native";
+import colors from "../../src/configs/colors.js";
 
 const Stepper =(props)=>{
     return(
@@ -46,7 +47,7 @@ const styles =StyleSheet.create({
         width:20,
         height:20,
         borderRadius:15,
-        backgroundColor:"#ff00ae"
+        backgroundColor:colors.primary
     },
 });
 export default Stepper;

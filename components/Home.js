@@ -5,7 +5,7 @@ import Main from "./homeComponents/Main";
 import Product from "./homeComponents/Product";
 import Category from "./homeComponents/Category";
 import { Appbar } from 'react-native-paper';
-
+import colors from "../src/configs/colors";
 const HomeStack=createStackNavigator();
 
 const MainHeader=()=>{
@@ -20,7 +20,7 @@ const MainHeader=()=>{
               <StatusBar backgroundColor="#fff" barStyle="dark-content" />
               <Appbar.Header style={{backgroundColor:"#fff",boxShadow:"none"}}>
               <Appbar.Action icon="menu" onPress={_handleSearch} />
-              <Appbar.Content color="#ff00ae" title="AvAlis"/>
+              <Appbar.Content color={colors.primary} title="AvAlis"/>
               <Appbar.Action icon="magnify" onPress={_handleSearch} />
               <Appbar.Action icon="basket"  onPress={_handleMore} />
               </Appbar.Header>
@@ -67,7 +67,7 @@ function Home() {
       <HomeStack.Navigator  initialRouteName="Main">
         <HomeStack.Screen name="Main" component={Main} options={{header:MainHeader}}/>
         <HomeStack.Screen name="Category" component={Category} options={{header:CategoryHeader}}/>
-        <HomeStack.Screen name="Product" component={Product} options={{header:ProductHeader}}/>
+        <HomeStack.Screen name="Product"  component={Product} options={{header:ProductHeader}}/>
       </HomeStack.Navigator>
     );
   }

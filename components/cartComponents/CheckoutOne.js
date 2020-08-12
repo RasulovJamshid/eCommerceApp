@@ -3,6 +3,9 @@ import { View,Text,ScrollView ,Dimensions,StyleSheet} from "react-native";
 import { TextInput,Button } from "react-native-paper";
 import CheckBox from "@react-native-community/checkbox";
 import Stepper from "../childComponets/Stepper";
+import colors from "../../src/configs/colors.js";
+
+
 const WIDTH=Dimensions.get("window").width-20;
 
 
@@ -13,7 +16,7 @@ const CheckoutOne =(props)=>{
             <Stepper steps={[{title:"address",checked:true},{title:"payments",checked:false},{title:"summary",checked:false}]}/>
             
             <View style={styles.checkbox}>
-                <CheckBox onChange={()=>setValue(!val)} tintColors={{true:"#ff00ae",false:"lightgray"}} value={val}/>
+                <CheckBox onChange={()=>setValue(!val)} tintColors={{true:colors.primary,false:"lightgray"}} value={val}/>
                 <Text>Billing address is same as shipping</Text>
             </View>
             <TextInput selectionColor="lightgray" style={styles.input} label="Street 1"/>
@@ -51,13 +54,13 @@ const styles =StyleSheet.create({
         margin:5,
         flexGrow:1,
         borderWidth:1,
-        borderColor:"#ff00ae",
+        borderColor:colors.primary,
         borderRadius:20
     },
     next:{
         margin:5,
         flexGrow:1,
-        backgroundColor:"#ff00ae",
+        backgroundColor:colors.primary,
         borderRadius:20
     }
 });

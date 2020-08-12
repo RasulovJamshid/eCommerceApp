@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import {Text,View,Image,Dimensions,StyleSheet} from "react-native";
 import {IconButton  } from "react-native-paper";
+import colors from "../../src/configs/colors.js";
 
 const WIDTH = Dimensions.get('window').width;
 
@@ -56,7 +57,7 @@ const styles=StyleSheet.create({
         borderRadius:15
     },
     title:{
-        color:"#ff00ae",
+        color:colors.primary,
         fontWeight:"700",
         flexGrow:1,
         margin:3
@@ -66,7 +67,7 @@ const styles=StyleSheet.create({
         margin:3
     },
     counter:{
-        color:"#ff00ae",
+        color:colors.primary,
         fontWeight:"700",
         flexGrow:1,
         margin:3,
@@ -90,12 +91,12 @@ const styles=StyleSheet.create({
         margin:10
     },
     price:{
-        color:"#ff00ae",
+        color:colors.primary,
         fontWeight:"700"
     },
     delete:{
         borderRadius:5,
-        backgroundColor:"#ff00ae"
+        backgroundColor:colors.primary
     },
     center:{
         flex:1,
