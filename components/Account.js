@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import AccountHeader from "./childComponets/Header.js";
 import { Avatar,List } from "react-native-paper";
 import colors from "../src/configs/colors.js";
+import {  AccessToken,GraphRequest,GraphRequestManager } from 'react-native-fbsdk';
 
 const list=[
   {icon:"pen",title:"Edit Profile"},
@@ -16,19 +17,67 @@ const list=[
   {icon:"logout",title:"LogOut"},
 ]
 
-function Account() {
-    return (
+
+
+
+class Account extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      userInfo:{
+        name:"Jamshid",
+        first_name:"JR"
+      },
+    }
+  }
+
+  getInfoFromToken = token => {
+    const PROFILE_REQUEST_PARAMS = {
+      fields: {
+        string: 'id, name,  first_name, last_name'    },
+    };
+    const profileRequest = new GraphRequest(
+      '/me',
+      {token, parameters: PROFILE_REQUEST_PARAMS},
+      (error, result) => {
+        if (error) {
+          console.log('login info has error: ' + error);
+        } else {
+          this.setState({userInfo: result});
+          console.log('result:', result);
+          this.props.navigation.setOptions({
+          title:`Hello, ${this.state.userInfo.first_name}!`,
+        })
+        }
+      },
+    );
+    new GraphRequestManager().addRequest(profileRequest).start();
+    
+  };
+
+  componentDidMount(){
+     AccessToken.getCurrentAccessToken().then(data => {
+      const accessToken = data.accessToken.toString();
+      this.getInfoFromToken(accessToken);
+    });
+    
+  }
+
+  render(){
+    return(
       <ScrollView style={{flex:1}}>
+        
       <View style={styles.avatarContainer}>
-        <Avatar.Text size={75} style={{backgroundColor:colors.primary}} label="JD" /> 
+        <Avatar.Text size={75} style={{backgroundColor:colors.primary}} label="JR" /> 
         <View style={{margin:15}}>
-          <Text style={styles.avatarTitle}>Jameson Donn</Text>
-          <Text style={styles.avatarSubtitle}>jamesondonn@gmail.com</Text>
+          <Text style={styles.avatarTitle}>{this.state.userInfo.name}</Text>
+          <Text style={styles.avatarSubtitle}>{this.state.userInfo.first_name}</Text>
         </View>
       </View>
         <View style={{flexGrow:1}}>
-           {list.map(i=>(
+           {list.map((i,index)=>(
              <List.Item
+             key={index}
              style={{margin:5}}
              onPress={()=>console.log("sa")}
              title={i.title}
@@ -38,8 +87,10 @@ function Account() {
             ))}
        </View>
       </ScrollView>
-    );
+    )
   }
+
+}
 
 const SettigsStack=createStackNavigator();
 
@@ -51,9 +102,9 @@ function AccountScreen() {
       }}
     >
       <SettigsStack.Screen
-        name="Home"
+        name="Account"
         component={Account}
-        options={{header:AccountHeader }}
+        // options={{headerShown:false }}
       />
     </SettigsStack.Navigator>
   );

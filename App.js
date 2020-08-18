@@ -6,6 +6,7 @@ import store from "./src/store/state";
 import AuthNavigation from "./components/Authentication/AuthNavigation";
 
 class App extends React.Component{
+  
   render(){
   return (
     <Provider store={store}>

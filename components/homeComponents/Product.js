@@ -39,6 +39,8 @@ const images = [
 ];
 
 export default class ProductDetail extends Component {
+  
+  
 
   constructor(props){
     super(props);
@@ -47,6 +49,7 @@ export default class ProductDetail extends Component {
         visible:false,
     }
 }
+
 
 _renderItem = ({item, index}) => {
   return (

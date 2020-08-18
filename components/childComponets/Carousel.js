@@ -5,11 +5,10 @@ import { Button } from 'react-native-paper';
 import colors from "../../src/configs/colors.js";
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
-const ITEM_WIDTH = Math.round(SLIDER_WIDTH *0.7);
-const ITEM_HEIGHT = Math.round(ITEM_WIDTH*0.6);
+const ITEM_WIDTH = Math.round(SLIDER_WIDTH *0.95);
+const ITEM_HEIGHT = Math.round(ITEM_WIDTH*0.4);
 
 const tagValues=[
-    {title:"All"},
     {title:"Wedding"},
     {title:"Accessories"},
     {title:"Shirt"},
@@ -19,35 +18,30 @@ const tagValues=[
 
 //sample data
 const ENTRIES1 = [
-  {
-      title: 'Beautiful and dramatic Antelope Canyon',
-      subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-      illustration: 'https://i.imgur.com/UYiroysl.jpg'
-  },
-  {
+   {
       title: 'Earlier this morning, NYC',
       subtitle: 'Lorem ipsum dolor sit amet',
-      illustration: 'https://i.imgur.com/UPrs1EWl.jpg'
+      illustration: 'https://ae01.alicdn.com/kf/H83196a25ec5e4419adfcc489dab88e9b3.png'
   },
   {
       title: 'White Pocket Sunset',
       subtitle: 'Lorem ipsum dolor sit amet et nuncat ',
-      illustration: 'https://i.imgur.com/MABUbpDl.jpg'
+      illustration: 'https://ae01.alicdn.com/kf/H4bff5969144b4ffdbf2875a74d256a69n.png'
   },
   {
       title: 'Acrocorinth, Greece',
       subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-      illustration: 'https://i.imgur.com/KZsmUi2l.jpg'
+      illustration: 'https://ae01.alicdn.com/kf/HTB1GxN.X7T2gK0jSZFk5jcIQFXam.gif'
   },
   {
       title: 'The lone tree, majestic landscape of New Zealand',
       subtitle: 'Lorem ipsum dolor sit amet',
-      illustration: 'https://i.imgur.com/2nCt3Sbl.jpg'
+      illustration: 'https://ae01.alicdn.com/kf/Hb07aa876e2154fe89da91ad129b4ef47D.png'
   },
   {
       title: 'Middle Earth, Germany',
       subtitle: 'Lorem ipsum dolor sit amet',
-      illustration: 'https://i.imgur.com/lceHsT6l.jpg'
+      illustration: 'https://ae01.alicdn.com/kf/HTB1BAisaUvrK1RjSspc762zSXXay.png'
   }
 ];
 
@@ -55,9 +49,12 @@ const ENTRIES1 = [
 export const TagSlider=()=>
     (
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
+                          <Button color="red"  onPress={()=>console.log("ALL")} style={{...styles.tagSlider,borderColor:"red",borderWidth:2}}>
+                             ALL
+                         </Button>
                 {tagValues.map((
-                    i=>(
-                        <Button color="#000"  onPress={()=>console.log(i.title)} style={styles.tagSlider}>
+                    (i,index)=>(
+                        <Button key={index} color="#000"  onPress={()=>console.log(i.title)} style={{...styles.tagSlider,borderColor:"lightgray",borderWidth:2}}>
                              {i.title}
                          </Button>
                     )
@@ -76,9 +73,9 @@ export default class MyCarousel extends React.Component {
  
   _renderItem = ({item, index}) => {
       return (
-          <View style={styles.slide}>
+          <View key={index} style={styles.slide}>
               <Image style={styles.image} source={{uri:item.illustration}}/>
-              <Button color={colors.primary} style={styles.button} icon="chevron-right"  onPress={() => console.log('Pressed')}>See more </Button>
+              {/* <Button color="#000" style={styles.button} icon="chevron-right"  onPress={() => console.log('Pressed')}>See more </Button> */}
           </View>
       );
   }
@@ -114,9 +111,10 @@ export default class MyCarousel extends React.Component {
           carouselRef={this._sliderRef}
           tappableDots={!!this._sliderRef}
          />
+         
          <View style={styles.textContainer}>
              <Text style={styles.textPr}>Products</Text>
-             <Text onPress={()=>this.props.navigation.navigate("Category")} style={styles.textAll}>See all</Text>
+             <Text onPress={()=>this.props.navigation.navigate("Category")} style={styles.textAll}>Categories</Text>
          </View>
         </View>
          );
@@ -127,7 +125,8 @@ const styles = StyleSheet.create({
      textContainer:{
         display:"flex",
         flexDirection:"row",
-        justifyContent:"center"
+        justifyContent:"center",
+        alignItems:"center"
      },
      tagSlider:{
         marginHorizontal:5,
@@ -144,9 +143,12 @@ const styles = StyleSheet.create({
      },
      textAll:{
         fontWeight:"600",
-        fontSize:16,
+        fontSize:18,
         color:"#000",
-        margin:5
+        margin:10,
+        backgroundColor:"#fff",
+        borderRadius:5,
+        padding:5
      },
      item: {
       backgroundColor: '#f9c2ff',
@@ -158,7 +160,7 @@ const styles = StyleSheet.create({
       fontSize: 32,
     },
     slide: {
-      marginVertical: 15,
+      marginVertical: 10,
       overflow: 'visible', // for custom animations
       borderRadius:20
      },

@@ -16,7 +16,7 @@ class RightContent extends  React.Component{
         style={styles.icon}  
         backgroundColor={this.state.like?"#fff":"#ff0000"} 
         color={this.state.like?"#ff0000":"#fff"} 
-        icon="heart" 
+        icon="dots-vertical" 
         />
     )
   }
@@ -24,13 +24,19 @@ class RightContent extends  React.Component{
 
 const randImage=()=>{
   let ran=Math.random();
-  if (ran<=1&&ran>0.75) {
+  if (ran<=1&&ran>0.90) {
     return require('../../android/app/img/nike.jpg')
   } 
+  else if(ran<=0.9&&ran>0.75){
+    return require('../../android/app/img/gpu.jpg')
+  }
   else if(ran<=0.75&&ran>0.5){
     return require('../../android/app/img/hand.jpg')
   }
   else if(ran<=0.5&&ran>0.25){
+    return require('../../android/app/img/laptop.jpg')
+  }
+  else if(ran<=0.25&&ran>0.15){
     return require('../../android/app/img/foot.jpg')
   }
   else{
@@ -42,16 +48,13 @@ const CardPr = (props) => (
   
   <Card onPress={()=>props.navigation.navigate("Product")} style={styles.card}  >
     <Card.Cover  source={randImage()} />
-    <Card.Title style={styles.title} title="$97" subtitle="Card Subtitle" right={(props) => <RightContent {...props}/>} rightStyle={{padding:5}} />
+    <Card.Title subtitleNumberOfLines={2}  subtitleStyle={{paddingVertical:5}} style={styles.title} title={props.price} subtitle={props.subTitle} right={(props) => <RightContent {...props}/>} rightStyle={{padding:5}} />
   </Card>
 );
 
 
 const styles = StyleSheet.create({
   icon:{
-    position:"absolute",
-    bottom:25,
-    right:15,
         },
   title: {
     backgroundColor:`white`,

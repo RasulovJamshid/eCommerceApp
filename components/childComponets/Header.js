@@ -14,9 +14,9 @@ const Header=()=>{
                 <StatusBar backgroundColor="#fff" barStyle="dark-content" />
                 <Appbar.Header style={{backgroundColor:"#fff",boxShadow:"none"}}>
                 <Appbar.Action icon="menu" onPress={_handleSearch} />
-                <Appbar.Content color={colors.primary} title="AvAlis"/>
-                <Appbar.Action icon="magnify" onPress={_handleSearch} />
-                <Appbar.Action icon="basket-outline"  onPress={_handleMore} />
+                <Appbar.Content color={colors.primary} title="ExpressMarket"/>
+                {/* <Appbar.Action icon="magnify" onPress={_handleSearch} /> */}
+                {/* <Appbar.Action icon="basket-outline"  onPress={_handleMore} /> */}
                 </Appbar.Header>
             </View>
         )

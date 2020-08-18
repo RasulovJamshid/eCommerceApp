@@ -6,28 +6,34 @@ const isAuthorized=(state=true,action)=>{
         case "YES":
             return true;
             break;
+        case "NO":
+            return false;
+            break;
         default:
             return false;
             break;
     }
 }
-const theme=(state=true,action)=>{
+const mainSearch=(state=false,action)=>{
     switch (action.type) {
-        case "YES":
+        case "CLOSE_SEARCH":
+            return false;
+            break;
+        case "OPEN_SEARCH":
             return true;
             break;
         default:
-            return false;
+            return state;
             break;
     }
 }
 
 const initialState={
-    theme:true,
+    mainSearch:false,
     isAuthorized:true,
 }
 
-let reducers=combineReducers({theme,isAuthorized},initialState);
+let reducers=combineReducers({mainSearch,isAuthorized},initialState);
 
 let store =createStore(reducers);
 

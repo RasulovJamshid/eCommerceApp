@@ -1,70 +1,67 @@
 import React from "react";
-import {View,Text,SafeAreaView,FlatList} from "react-native";
-import Card from "../childComponets/Card";
-import {TagSlider} from "../childComponets/Carousel";
+import {View,Text,SafeAreaView,FlatList,ScrollView,StyleSheet} from "react-native";
+import { List } from "react-native-paper";
+import colors from "../../src/configs/colors"
+const list=[
+  {icon:"face-woman",title:"Ayollar kiyimi",id:"women"},
+  {icon:"human-greeting",title:"Erkaklar kiyimi",id:"man"},
+  {icon:"heart-outline",title:"Telefon va Aksessuarlar",id:"mobile"},
+  {icon:"clock-time-eight-outline",title:"Kompyuter va periferiya qurilmalari",id:"pc"},
+  {icon:"trackpad",title:"Elektr jihozlar",id:"electric"},
+  {icon:"cards",title:"Yuveleriya va Soatlar",id:"jewelery"},
+  {icon:"bell-alert-outline",title:"Uy jihozlari(mebel)",id:"home"},
+  {icon:"logout",title:"Sumka va oyoq kiyimlar",id:"bag"},
+  {icon:"pen",title:"O’yinchoqlar ",id:"toy"},
+  {icon:"map-marker",title:"O’quv qurollari",id:"stool"},
+  {icon:"heart-outline",title:"Qurilish mahsulotlari",id:"build"},
+  {icon:"clock-time-eight-outline",title:"Oziq-ovqat mahsulotlari",id:"food"},
+  {icon:"trackpad",title:"Dori-darmon vositalari va medtexnika",id:"medicine"},
+  {icon:"cards",title:"Xo’jalik mahsulotlari",id:"backyard"},
+  {icon:"bell-alert-outline",title:"Avtomobil ehtiyot qismlari",id:"spare"},
+  {icon:"logout",title:"Materiallar",id:"material"},
+  {icon:"bell-alert-outline",title:"Sarpo (sarpo sandiqlari, sarpo ko’rpa to’shaklar)",id:"additional"},
+  {icon:"logout",title:"Idish tovoqlar",id:"dish"},
+]
 
-const DATA = [
-    {
-      id: 'bd7acbead-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'hand',
-    },
-    {
-      id: '3ac68afc-c60d5-48d3-a4f8-fbd91aa97f63',
-      title: 'foot',
-    },
-    {
-      id: '58694a0f-3dad1-471f-bd96-145571e29d72',
-      title: 'foot',
-    },
-    {
-        id: 'bd7acbea-c1bs1-46c2-aed5-3ad53abb28ba',
-        title: 'hand',
-      },
-      {
-        id: '3ac68afc-c60d5-48d3-a4f8-fbd91aa97f63',
-        title: 'hand',
-      },
-      {
-        id: '58694a0f-3da1-471f-bd9d6-145571e29d72',
-        title: 'foot',
-      },
-      {
-        id: 'bd7acbea-c1b1-46c2-daed5-3ad53abb28ba',
-        title: 'hand',
-      },
-      {
-        id: '3ac68afc-c605-48d3-a4f8-fbd9s1aa97f63',
-        title: 'foot',
-      },
-      {
-        id: '58694a0f-3da1-471f-bd96-1455s71e29d72',
-        title: 'foot',
-      },
-      {
-          id: 'bd7acbea-c1b1-46c2-aded5-3ad53abb28ba',
-          title: 'hand',
-        },
-        {
-          id: '3ac68afc-c605-48d3-a4df8-fbd91aa97f63',
-          title: 'hand',
-        },
-        {
-          id: '58694a0f-3da1-471f-bd96-1455d71e29d72',
-          title: 'foot',
-        },
-  ];
+const listSub=[
+  {icon:"cards",title:"Xo’jalik mahsulotlari"},
+  {icon:"bell-alert-outline",title:"Avtomobil ehtiyot qismlari"},
+  {icon:"logout",title:"Materiallar"},
+  {icon:"bell-alert-outline",title:"Sarpo (sarpo sandiqlari, sarpo ko’rpa to’shaklar)"},
+  {icon:"logout",title:"Idish tovoqlar"},
+];
+
+
+
+const styles=StyleSheet.create({
+  icon:{
+    backgroundColor:"red"
+  },
+  
+})
 
 export default Category = ({navigation}) => {
-  
     return (
      <SafeAreaView >
-          <FlatList
-          ListHeaderComponent={<TagSlider/>}
-          numColumns={2}
-          data={DATA}
-          renderItem={(item)=><Card title={item.title} navigation={navigation}/>}
-          keyExtractor={item => item.id}
-        />
+       <ScrollView>
+       <List.Item
+             style={{margin:10,backgroundColor:"#fff",borderLeftColor:"red",borderLeftWidth:4}}
+             onPress={()=>navigation.navigate("Listing",{type:"Barchasi"})}
+             title="Barchasi"
+             titleStyle={{color:"red"}}
+             right={props => <List.Icon {...props} icon="chevron-right" />}
+            />
+         {list.map((i,index)=>(
+             <List.Item
+             key={index}
+             style={{margin:10,backgroundColor:"#fff",borderLeftColor:"lightblue",borderLeftWidth:4}}
+             onPress={()=>navigation.navigate("SubCategory",{...i})}
+             title={i.title}
+             left={props =>  <List.Icon style={styles.icon} color={colors.primary} {...props} icon={i.icon} />}
+             right={props => <List.Icon {...props} icon="chevron-right" />}
+            />
+            ))}
+      </ScrollView>
       </SafeAreaView>
       
     );
