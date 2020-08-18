@@ -1,15 +1,15 @@
-import React from "react";
+import React,{useState} from "react";
 import {createStackNavigator} from "@react-navigation/stack"
 import {connect  } from "react-redux";
 import Login from "./Login";
 import Signup from "./Signup";
 import TabNavigation from "../TabNavigation";
+// import AsyncStorage from "@react-native-community/async-storage";
 
 const Navigation =createStackNavigator();
 
-const AuthNavigation=()=>{
-    return(
-        
+const AuthNavigation =(props)=>(
+    
         <Navigation.Navigator initialRouteName="Login" 
             screenOptions={{headerShown:false,cardStyle:{backgroundColor:"#fff"},transitionSpec:{
                 open:{
@@ -27,16 +27,19 @@ const AuthNavigation=()=>{
             }}}>
             <Navigation.Screen name="Login"  component={Login}/>
             <Navigation.Screen name="Signup" component={Signup}/>
-        </Navigation.Navigator>
+        </Navigation.Navigator>)
         
-    )
+    
+    
 
-}
 
-const AuthNavigationReducer=(props)=>{
-    return(
-        props.isAuthorized?<TabNavigation/>:<AuthNavigation/>
-    )
+class AuthNavigationReducer extends React.Component{
+    
+     render()  {
+    
+    return  (this.props.isAuthorized?<TabNavigation/>:<AuthNavigation/>)
+        
+    }
 }
 
 const mapStateToProps=(state)=>{
