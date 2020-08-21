@@ -31,6 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
           // packages.add(new RNGoogleSigninPackage());
           // packages.add(new SplashScreenReactPackage());
+          // packages.add(new AsyncStoragePackage());//manual
           return packages;
         }
 

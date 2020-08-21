@@ -1,7 +1,7 @@
 import React from "react";
 import {View,Text,SafeAreaView,FlatList,ScrollView,StyleSheet} from "react-native";
 import { List } from "react-native-paper";
-import colors from "../../src/configs/colors"
+import categories from "../../src/configs/categories"
 
 	const women=[
   "Bluzka va ko’ylak",
@@ -22,7 +22,8 @@ import colors from "../../src/configs/colors"
   "Kostyumlar",
 	"Ichki kiyimlar" ,
 	"Ko’ylaklar"]
-	
+  
+  // const man=[]
 
 const listSub=[
   {icon:"cards",title:"Bluzka va ko’ylak"},
@@ -57,7 +58,7 @@ export default Category = ({route,navigation}) => {
              titleStyle={{color:"red"}}
              right={props => <List.Icon {...props} icon="chevron-right" />}
             />
-         {women.map((i,index)=>(
+         {categories[route.params.id].map((i,index)=>(
              <List.Item
              key={index}
              style={styles.item}

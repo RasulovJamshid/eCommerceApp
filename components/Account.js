@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, View,ScrollView,StyleSheet } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
-import AccountHeader from "./childComponets/Header.js";
+import { connect } from "react-redux";
 import { Avatar,List } from "react-native-paper";
 import colors from "../src/configs/colors.js";
 import {  AccessToken,GraphRequest,GraphRequestManager } from 'react-native-fbsdk';
@@ -42,6 +42,7 @@ class Account extends React.Component{
       (error, result) => {
         if (error) {
           console.log('login info has error: ' + error);
+          
         } else {
           this.setState({userInfo: result});
           console.log('result:', result);
@@ -56,11 +57,17 @@ class Account extends React.Component{
   };
 
   componentDidMount(){
-     AccessToken.getCurrentAccessToken().then(data => {
-      const accessToken = data.accessToken.toString();
-      this.getInfoFromToken(accessToken);
-    });
-    
+      if(this.props.isFaceBook){
+        AccessToken.getCurrentAccessToken().then(data => {
+          const accessToken = data.accessToken.toString();
+          this.getInfoFromToken(accessToken);
+        }
+       );
+    }else{
+      this.props.navigation.setOptions({
+        title:'Hello, ...!',
+      })
+    }
   }
 
   render(){
@@ -129,5 +136,9 @@ const styles=StyleSheet.create({
     fontSize:14
   }
 })
-  
-export default AccountScreen;
+ 
+const mapStateToProps=(state)=>({
+  isFaceBook:state.isFaceBook,
+})
+
+export default connect(mapStateToProps)(AccountScreen);

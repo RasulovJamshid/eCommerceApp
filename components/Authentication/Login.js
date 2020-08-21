@@ -48,6 +48,7 @@ class Login extends React.Component{
                     } else if (result.isCancelled) {
                         console.log("login is cancelled.");
                     } else {
+                        this.props.setFaceBook();
                         this.props.authenticate();
                         }
                     
@@ -72,7 +73,8 @@ const styles=StyleSheet.create({
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        authenticate:()=>dispatch({type:"YES"})
+        authenticate:()=>dispatch({type:"YES"}),
+        setFaceBook:()=>dispatch({type:"FACEB"}),
     }
 }
 

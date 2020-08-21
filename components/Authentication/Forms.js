@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button,TextInput} from "react-native-paper";
+// import AsyncStorage from "@react-native-community/async-storage";
 import {StyleSheet  ,Text} from "react-native";
 import colors from "../../src/configs/colors";
 import {connect} from "react-redux";
@@ -41,8 +42,9 @@ const styles=StyleSheet.create({
       .required(),
   });
 
-export const LoginForm= (props) => (
-                  
+export const LoginForm= (props) => {
+    
+    return(
     <Formik
     validationSchema={loginValidationSchema}
     initialValues={{ 
@@ -50,6 +52,7 @@ export const LoginForm= (props) => (
       password: '' 
     }}
     onSubmit={props.authenticate}
+    // onSubmit={(value)=>this.setStringValue(value.name)}
    >
     {({ values, handleChange, errors, setFieldTouched, touched, isValid, handleSubmit }) => (
       <React.Fragment>
@@ -88,7 +91,9 @@ export const LoginForm= (props) => (
     )}
   </Formik>                                   
                  
-);
+)};
+
+
 
 export const RegisterForm= (props) => (
                   
