@@ -25,6 +25,26 @@ const isFaceBook=(state=false,action)=>{
             return state;
     }
 }
+const accessToken=(state="",action)=>{
+    switch (action.type) {
+        case "ASSIGN":
+            return action.payload;
+            break;
+        default:
+            return state;
+            break;
+    }
+}
+const setLangauge=(state="uz",action)=>{
+    switch (action.type) {
+        case "SETLANGUAGE":
+            return action.payload;
+            break;
+        default:
+            return state;
+            break;
+    }
+}
 const mainSearch=(state=false,action)=>{
     switch (action.type) {
         case "CLOSE_SEARCH":
@@ -42,10 +62,12 @@ const mainSearch=(state=false,action)=>{
 const initialState={
     mainSearch:false,
     isAuthorized:false,
-    isFaceBook:false
+    isFaceBook:false,
+    accessToken:"",
+    setLangauge:"uz"
 }
 
-let reducers=combineReducers({mainSearch,isAuthorized,isFaceBook},initialState);
+let reducers=combineReducers({mainSearch,isAuthorized,isFaceBook,accessToken,setLangauge},initialState);
 
 let store =createStore(reducers);
 
