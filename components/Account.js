@@ -2,19 +2,19 @@ import * as React from 'react';
 import { Text, View,ScrollView,StyleSheet } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { connect } from "react-redux";
-import { Avatar,List } from "react-native-paper";
+import { Avatar,List,Button } from "react-native-paper";
 import colors from "../src/configs/colors.js";
-import {  AccessToken,GraphRequest,GraphRequestManager } from 'react-native-fbsdk';
+import strings from "../src/configs/localization";
+import { AccessToken,GraphRequest,GraphRequestManager } from 'react-native-fbsdk';
+import AsyncStorage from "@react-native-community/async-storage";
+import RNRestart from 'react-native-restart';
 
 const list=[
-  {icon:"pen",title:"Edit Profile"},
-  {icon:"map-marker",title:"Shipping adress"},
-  {icon:"heart-outline",title:"Wishlist"},
-  {icon:"clock-time-eight-outline",title:"Order History"},
-  {icon:"trackpad",title:"Track Order"},
-  {icon:"cards",title:"Cards"},
-  {icon:"bell-alert-outline",title:"Notification"},
-  {icon:"logout",title:"LogOut"},
+  {icon:"pen",title:strings.editPr},
+  {icon:"map-marker",title:strings.shippingAd},
+  {icon:"heart-outline",title:strings.wishlist},
+  {icon:"clock-time-eight-outline",title:strings.orderH},
+  {icon:"trackpad",title:strings.track},
 ]
 
 
@@ -25,9 +25,35 @@ class Account extends React.Component{
     super(props);
     this.state={
       userInfo:{
-        name:"Jamshid",
-        first_name:"JR"
+        username:"...",
+        name:"...",
+        first_name:"JR",
+        email:"sample"
       },
+    }
+  }
+
+  removeData = async () => {
+    try {
+      await AsyncStorage.removeItem("authToken");
+      RNRestart.Restart();
+      return true;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
+  getUserInfo=async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('userInfo')
+      if (jsonValue != null ) {
+        this.setState({userInfo:JSON.parse(jsonValue)});
+        this.props.navigation.setOptions({
+          title:`${strings.hello}, ${this.state.userInfo.username} !`,
+        })
+        }
+    } catch(e) {
+        console.log(e)
     }
   }
 
@@ -47,7 +73,7 @@ class Account extends React.Component{
           this.setState({userInfo: result});
           console.log('result:', result);
           this.props.navigation.setOptions({
-          title:`Hello, ${this.state.userInfo.first_name}!`,
+          title:`${strings.hello}, ${this.state.userInfo.first_name}!`,
         })
         }
       },
@@ -57,17 +83,19 @@ class Account extends React.Component{
   };
 
   componentDidMount(){
+    this.getUserInfo();
       if(this.props.isFaceBook){
         AccessToken.getCurrentAccessToken().then(data => {
           const accessToken = data.accessToken.toString();
           this.getInfoFromToken(accessToken);
         }
        );
-    }else{
-      this.props.navigation.setOptions({
-        title:'Hello, ...!',
-      })
     }
+    // else{
+    //   this.props.navigation.setOptions({
+    //     title:`${strings.hello}, ...!`,
+    //   })
+    // }
   }
 
   render(){
@@ -77,8 +105,8 @@ class Account extends React.Component{
       <View style={styles.avatarContainer}>
         <Avatar.Text size={75} style={{backgroundColor:colors.primary}} label="JR" /> 
         <View style={{margin:15}}>
-          <Text style={styles.avatarTitle}>{this.state.userInfo.name}</Text>
-          <Text style={styles.avatarSubtitle}>{this.state.userInfo.first_name}</Text>
+          <Text style={styles.avatarTitle}>{this.state.userInfo.username}</Text>
+          <Text style={styles.avatarSubtitle}>{this.state.userInfo.email}</Text>
         </View>
       </View>
         <View style={{flexGrow:1}}>
@@ -86,22 +114,30 @@ class Account extends React.Component{
              <List.Item
              key={index}
              style={{margin:5}}
-             onPress={()=>console.log("sa")}
+            //  onPress={()=>{this.storeLanguage("ru");RNRestart.Restart();}}
+             onPress={()=>console.log("list")}
              title={i.title}
              left={props =>  <List.Icon style={styles.icon} color={colors.primary} {...props} icon={i.icon} />}
              right={props => <List.Icon {...props} icon="chevron-right" />}
             />
             ))}
        </View>
+       <Button onPress={this.removeData} color="#fff" style={{margin:10,backgroundColor:colors.primary}}>{strings.logout}</Button>
       </ScrollView>
     )
   }
 
 }
 
+const mapDispatchToPropss=(dispatch)=>({
+  setLanguage:value=>dispatch({type:"SETLANGUAGE",payload:value})
+})
+
+const SuperAccount=connect(null,mapDispatchToPropss)(Account);
+
 const SettigsStack=createStackNavigator();
 
-function AccountScreen() {
+function AccountScreen(props) {
   return (
     <SettigsStack.Navigator
       screenOptions={{
@@ -110,7 +146,7 @@ function AccountScreen() {
     >
       <SettigsStack.Screen
         name="Account"
-        component={Account}
+        component={SuperAccount}
         // options={{headerShown:false }}
       />
     </SettigsStack.Navigator>
@@ -138,7 +174,10 @@ const styles=StyleSheet.create({
 })
  
 const mapStateToProps=(state)=>({
-  isFaceBook:state.isFaceBook,
+  isFaceBook:state.isFaceBook
+})
+const mapDispatchToProps=(dispatch)=>({
+  setLanguage:value=>dispatch({type:"SETLANGUAGE",payload:value})
 })
 
-export default connect(mapStateToProps)(AccountScreen);
+export default connect(mapStateToProps,mapDispatchToProps)(AccountScreen);

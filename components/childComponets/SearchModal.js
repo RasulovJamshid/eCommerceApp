@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { Searchbar } from 'react-native-paper';
 import { connect } from "react-redux";
+import strings from "../../src/configs/localization"
 
 
 
@@ -37,7 +38,7 @@ class SearchModal extends React.Component {
       >
         <Searchbar
          autoFocus={true}
-         placeholder="Search"
+         placeholder={strings.search}
          onChangeText={(query)=>this.setState({searchQuery:query})}
          value={this.state.searchQuery}
             />  

@@ -7,7 +7,7 @@ import Category from "./homeComponents/Category";
 import SubCategory from "./homeComponents/SubCategory";
 import Listing from "./homeComponents/Listing";
 import { Appbar } from 'react-native-paper';
-import colors from "../src/configs/colors";
+import strings from "../src/configs/localization";
 import {connect} from "react-redux"
 
 const HomeStack=createStackNavigator();
@@ -27,8 +27,8 @@ let MainHeader=(props)=>{
         <View>
               <StatusBar backgroundColor="#fff" barStyle="dark-content" />
               <Appbar.Header style={{backgroundColor:"#fff",boxShadow:"none"}}>
-              <Appbar.Action  icon="menu" onPress={_handleMore} />
-              <Appbar.Content color="gray" onPress={props.handleSearch}  style={{borderWidth:1,borderColor:"lightgray",borderRadius:15}}  title="search..."/>
+              {/* <Appbar.Action  icon="menu" onPress={_handleMore} /> */}
+              <Appbar.Content color="gray" onPress={props.handleSearch}  style={{borderWidth:1,borderColor:"lightgray",borderRadius:15,marginLeft:10}}  title={`${strings.search}...`}/>
               <Appbar.Action icon="magnify"  onPress={props.handleSearch} />
               <Appbar.Action icon="basket-outline" color="red" onPress={_handleMore} />
               </Appbar.Header>

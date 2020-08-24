@@ -4,6 +4,7 @@ import { Button } from "react-native-paper";
 import { createStackNavigator } from "@react-navigation/stack";
 import SettingsHeader from "./childComponets/Header.js";
 import colors from "../src/configs/colors.js";
+import strings from "../src/configs/localization";
 
 const WIDTH = Dimensions.get('window').width-100;
 
@@ -32,11 +33,11 @@ const [enabled,setEnabled]=useState(false);
 function Settings() {
     return (
       <ScrollView style={{ flex: 1, margin:15,}}>
-        <Text style={{fontSize:20,fontWeight:"700"}}>Your App Settings!</Text>
-        <SwitchPart title="Notifications" content="Recive notifications on latest offers and store updates"/>
-        <SwitchPart title="Popups" content="Disable all popups and adverts from third partyy vendors"/>
-        <SwitchPart title="Order History" content="Keep your order history on the app unless manually removed"/>
-        <Button  color="#fff" onPress={()=>Alert.alert("Updated")}  style={styles.button} >Update Settings</Button>
+        <Text style={{fontSize:20,fontWeight:"700"}}>{strings.settings}!</Text>
+        <SwitchPart title={strings.note} content={strings.notetitle}/>
+        <SwitchPart title={strings.popup} content={strings.poptitle}/>
+        <SwitchPart title={strings.orderH} content={strings.orderhtitle}/>
+        <Button  color="#fff" onPress={()=>Alert.alert("Updated")}  style={styles.button} >{strings.updateSetting}</Button>
       </ScrollView>
     );
   }

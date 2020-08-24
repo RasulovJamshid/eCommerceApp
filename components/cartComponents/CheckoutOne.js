@@ -4,6 +4,7 @@ import { TextInput,Button } from "react-native-paper";
 import CheckBox from "@react-native-community/checkbox";
 import Stepper from "../childComponets/Stepper";
 import colors from "../../src/configs/colors.js";
+import strings from "../../src/configs/localization.js";
 
 
 const WIDTH=Dimensions.get("window").width-20;
@@ -17,18 +18,18 @@ const CheckoutOne =(props)=>{
             
             <View style={styles.checkbox}>
                 <CheckBox onChange={()=>setValue(!val)} tintColors={{true:colors.primary,false:"lightgray"}} value={val}/>
-                <Text>Billing address is same as shipping</Text>
+                <Text>{strings.billadd}</Text>
             </View>
-            <TextInput selectionColor="lightgray" style={styles.input} label="Street 1"/>
-            <TextInput selectionColor="lightgray" style={styles.input}label="Street 2"/>
-            <TextInput selectionColor="lightgray" style={styles.input} label="City"/>
+            <TextInput selectionColor="lightgray" style={styles.input} label={`${strings.street} 1`}/>
+            <TextInput selectionColor="lightgray" style={styles.input}label={`${strings.street} 1`}/>
+            <TextInput selectionColor="lightgray" style={styles.input} label={strings.city}/>
             <View style={{flexDirection:"row",width:WIDTH}}>
-                <TextInput style={styles.inputHalf} label="State"/>
-                <TextInput style={styles.inputHalf} label="Country"/>
+                <TextInput style={styles.inputHalf} label={strings.state}/>
+                <TextInput style={styles.inputHalf} label={strings.country}/>
             </View>
             <View style={{flexDirection:"row"}}>
-                 <Button color="#000" onPress={()=>props.navigation.goBack()} style={styles.back}>Back</Button>
-                 <Button color="#fff" onPress={()=>props.navigation.navigate("CheckoutTwo")} style={styles.next}>Next</Button>
+                 <Button color="#000" onPress={()=>props.navigation.goBack()} style={styles.back}>{strings.back}</Button>
+                 <Button color="#fff" onPress={()=>props.navigation.navigate("CheckoutThree")} style={styles.next}>{strings.next}</Button>
             </View>
         </ScrollView>
     )

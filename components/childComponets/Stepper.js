@@ -8,10 +8,7 @@ const Stepper =(props)=>{
             <View style={styles.stepOut}>
                 {props.steps[0].checked&&<View style={styles.stepIn}/>}
             </View>
-               <View  style={styles.line}/>
-            <View style={styles.stepOut}>
-                {props.steps[1].checked&&<View style={styles.stepIn}/>}
-            </View>
+               
                <View  style={styles.line}/>
             <View style={styles.stepOut}>
                 {props.steps[2].checked&&<View style={styles.stepIn}/>}

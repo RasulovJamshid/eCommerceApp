@@ -11,83 +11,83 @@ const DATA = [
   {
     id: 'bd7acbead-c1b1-46c2-aed5-3ad53abb28ba',
     title: 'hand',
-    subTitle:"Buy from us, we are providing awesome services",
+    subTitle:"Bizdan sotib oling, biz ajoyib xizmatlar ko'rsatamiz",
     price:"$59"
   },
   {
     id: '3ac68afc-c60d5-48d3-a4f8-fbd91aa97f63',
     title: 'foot',
-    subTitle:"Snickers, Clothes, T-shirts, wide range of sizes ",
+    subTitle:"Kiyim-kechak, futbolkalar, har xil o'lchamdagi narsalar ",
     price:"$61"
 
   },
   {
     id: '58694a0f-3dad1-471f-bd96-145571e29d72',
     title: 'foot',
-    subTitle:"Snickers, Clothes, T-shirts, wide range of sizes ",
+    subTitle:"Futbolkalar, har xil o'lchamdagi narsalar ",
     price:"$14"
 
   },
   {
       id: 'bd7acbea-c1bs1-46c2-aed5-3ad53abb28ba',
       title: 'hand',
-      subTitle:"Buy from us, we are providing awesome services",
+      subTitle:"Bizdan sotib oling, biz ajoyib xizmatlar ko'rsatamiz",
       price:"$32"
 
     },
     {
       id: '3ac68afc-c60d5-48d3-a4f8-fbd91aa97f63',
       title: 'hand',
-      subTitle:"Snickers, Clothes, T-shirts, wide range of sizes .Snickers, Clothes",
+      subTitle:"Kiyim-kechak, futbolkalar, har xil o'lchamdagi narsalar",
       price:"$45"
 
     },
     {
       id: '58694a0f-3da1-471f-bd9d6-145571e29d72',
       title: 'foot',
-      subTitle:"Buy from us, we are providing awesome services",
+      subTitle:"Bizdan sotib oling, biz ajoyib xizmatlar ko'rsatamiz",
       price:"$59"
 
     },
     {
       id: 'bd7acbea-c1b1-46c2-daed5-3ad53abb28ba',
       title: 'hand',
-      subTitle:"Buy from us, we are providing awesome services",
+      subTitle:"Bizdan sotib oling, biz ajoyib xizmatlar ko'rsatamiz",
       price:"$80"
 
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd9s1aa97f63',
       title: 'foot',
-      subTitle:"Buy from us, we are providing awesome services",
+      subTitle:"Bizdan sotib oling, biz ajoyib xizmatlar ko'rsatamiz",
       price:"$100"
 
     },
     {
       id: '58694a0f-3da1-471f-bd96-1455s71e29d72',
       title: 'foot',
-      subTitle:"Buy from us, we are providing awesome services",
+      subTitle:"Kiyim-kechak, futbolkalar, har xil o'lchamdagi narsalar",
       price:"$59"
 
     },
     {
         id: 'bd7acbea-c1b1-46c2-aded5-3ad53abb28ba',
         title: 'hand',
-        subTitle:"Buy from us, we are providing awesome services",
+        subTitle:"Kiyim-kechak, futbolkalar, har xil o'lchamdagi narsalar",
         price:"$99"
 
       },
       {
         id: '3ac68afc-c605-48d3-a4df8-fbd91aa97f63',
         title: 'hand',
-        subTitle:"Snickers, Clothes, T-shirts, wide range of sizes .Snickers, Clothes",
+        subTitle:"Futbolkalar, har xil o'lchamdagi narsalar",
         price:"$73"
 
       },
       {
         id: '58694a0f-3da1-471f-bd96-1455d71e29d72',
         title: 'foot',
-        subTitle:"Buy from us,",
+        subTitle:"Futbolkalar",
         price:"$45"
 
       },

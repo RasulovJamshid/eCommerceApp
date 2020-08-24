@@ -1,7 +1,7 @@
 import  React ,{useState} from 'react';
 import { Avatar, Card,Button, Appbar} from 'react-native-paper';
 import {StyleSheet} from "react-native";
-
+import strings from "../../src/configs/localization";
 class RightContent extends  React.Component{
   constructor(props){
     super(props);
@@ -48,7 +48,7 @@ const CardPr = (props) => (
   
   <Card onPress={()=>props.navigation.navigate("Product")} style={styles.card}  >
     <Card.Cover  source={randImage()} />
-    <Card.Title subtitleNumberOfLines={2}  subtitleStyle={{paddingVertical:5}} style={styles.title} title={props.price} subtitle={props.subTitle} right={(props) => <RightContent {...props}/>} rightStyle={{padding:5}} />
+    <Card.Title subtitleNumberOfLines={2}  subtitleStyle={{paddingVertical:5}} style={styles.title} title={`${props.price} ${strings.currency}`} subtitle={props.subTitle} right={(props) => <RightContent {...props}/>} rightStyle={{padding:5}} />
   </Card>
 );
 

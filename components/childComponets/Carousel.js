@@ -3,17 +3,18 @@ import Carousel,{Pagination} from 'react-native-snap-carousel';
 import {View,StyleSheet,Image,Dimensions,Text,ScrollView} from "react-native";
 import { Button } from 'react-native-paper';
 import colors from "../../src/configs/colors.js";
+import strings from "../../src/configs/localization.js";
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH *0.95);
 const ITEM_HEIGHT = Math.round(ITEM_WIDTH*0.4);
 
 const tagValues=[
-    {title:"Wedding"},
-    {title:"Accessories"},
-    {title:"Shirt"},
-    {title:"Shoes"},
-    {title:"Coat"}
+    {title:strings.women},
+    {title:strings.accessories},
+    {title:strings.tshirt},
+    {title:strings.shoes},
+    {title:strings.coat}
 ];
 
 //sample data
@@ -50,7 +51,7 @@ export const TagSlider=()=>
     (
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
                           <Button color="red"  onPress={()=>console.log("ALL")} style={{...styles.tagSlider,borderColor:"red",borderWidth:2}}>
-                             ALL
+                             {strings.all}
                          </Button>
                 {tagValues.map((
                     (i,index)=>(
@@ -113,8 +114,8 @@ export default class MyCarousel extends React.Component {
          />
          
          <View style={styles.textContainer}>
-             <Text style={styles.textPr}>Products</Text>
-             <Text onPress={()=>this.props.navigation.navigate("Category")} style={styles.textAll}>Categories</Text>
+             <Text style={styles.textPr}>{strings.all}</Text>
+             <Text onPress={()=>this.props.navigation.navigate("Category")} style={styles.textAll}>{strings.categoryies}</Text>
          </View>
         </View>
          );

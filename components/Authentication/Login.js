@@ -8,6 +8,7 @@ import {LoginForm} from "./Forms";
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 
 
+
 const WIDTH=Dimensions.get("window").width/2;
 
 
@@ -25,12 +26,13 @@ class Login extends React.Component{
         <ScrollView style={{flex:1,}}>
             <StatusBar backgroundColor="#fff" barStyle="dark-content" />
             <Image style={styles.img} source={require("../../android/app/img/express.png")}/>
+            {/* {console.log(this.props.route)} */}
             <View style={styles.switchCont}>
                 <Button color="#000" style={styles.switch}>Sign in</Button>
                 <Button onPress={()=>this.props.navigation.dispatch(StackActions.replace("Signup"))} color="#000">Sign up</Button>
             </View>
             <View style={{margin:10}}>
-                <LoginForm authenticate={this.props.authenticate}/>
+                <LoginForm accessToken={this.props.accessToken} authenticate={this.props.authenticate}/>
             </View>
             
             <View style={{flexDirection:"row",alignItems:"center"}}>
@@ -74,6 +76,7 @@ const styles=StyleSheet.create({
 const mapDispatchToProps=(dispatch)=>{
     return{
         authenticate:()=>dispatch({type:"YES"}),
+        accessToken:(val)=>dispatch({type:"ASSIGN",payload:val}),
         setFaceBook:()=>dispatch({type:"FACEB"}),
     }
 }

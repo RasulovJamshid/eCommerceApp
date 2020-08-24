@@ -1,15 +1,30 @@
 import React,{useState} from "react";
+import { ActivityIndicator ,View} from "react-native";
 import {createStackNavigator} from "@react-navigation/stack"
 import {connect  } from "react-redux";
 import Login from "./Login";
 import Signup from "./Signup";
 import TabNavigation from "../TabNavigation";
-// import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-community/async-storage";
+import { NavigationContainer } from '@react-navigation/native';
 
 const Navigation =createStackNavigator();
 
-const AuthNavigation =(props)=>(
+const linking = {
+    prefixes: ['https://expressmarket.uz/auth'],
+    config: {
+        screens: {
+            Login: {
+              path: '/:uid/:token',
+              
+            },
+          },
+      },
+  };
+
+  function AuthNavigation (){
     
+    return(
         <Navigation.Navigator initialRouteName="Login" 
             screenOptions={{headerShown:false,cardStyle:{backgroundColor:"#fff"},transitionSpec:{
                 open:{
@@ -27,24 +42,63 @@ const AuthNavigation =(props)=>(
             }}}>
             <Navigation.Screen name="Login"  component={Login}/>
             <Navigation.Screen name="Signup" component={Signup}/>
-        </Navigation.Navigator>)
+        </Navigation.Navigator>
+   )
+        }
         
     
     
 
 
 class AuthNavigationReducer extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            isAuth:false,
+            loading:true,
+        }
+        this.getData();
+    }
+
+    getData = async () => {
+        try {
+          const value = await AsyncStorage.getItem('authToken')
+          if(value !== null) {
+            this.setState({isAuth:true});
+            this.setState({loading:false});      
+            
+       }else{
+           this.setState({isAuth:false});
+           this.setState({loading:false});  
+       }
+        } catch(e) {
+            this.setState({isAuth:false});     
+            this.setState({loading:false});
+          }
+      }
+      
+      
     
+
+
      render()  {
-    
-    return  (this.props.isAuthorized?<TabNavigation/>:<AuthNavigation/>)
+        
+        if(this.state.loading){
+           return  <View style={{flex: 1,justifyContent: "center"}}><ActivityIndicator size="large" color="red"/></View>
+        }else{
+           return  this.state.isAuth?<TabNavigation language={this.props.language}/>:<AuthNavigation/>
+        }
+        
+        
+        // return  (this.props.isAuthorized?<TabNavigation language={this.props.language}/>:<AuthNavigation/>)
         
     }
 }
 
 const mapStateToProps=(state)=>{
     return{
-      isAuthorized:state.isAuthorized
+      isAuthorized:state.isAuthorized,
+      language:state.setLanguage
     }
   }
   

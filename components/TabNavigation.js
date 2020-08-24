@@ -8,13 +8,32 @@ import Account from "./Account.js";
 import Settings from "./Settings.js";
 import Cart from "./Cart.js";
 import colors from "../src/configs/colors.js";
+// import AsyncStorage from "@react-native-community/async-storage";
+import strings from "../src/configs/localization";
+
+
 const Tab = createMaterialBottomTabNavigator();
 
 //f0edf6
 export default class TabNavigation extends React.Component{
     constructor(props){
         super(props);
+        // this.getLanguage();
+
     }
+
+    // getLanguage = async () => {
+    //   try {
+    //     const value = await AsyncStorage.getItem('language')
+    //     if(value !== null) {
+    //       strings.setLanguage(value);
+    //     }
+    //   } catch(e) {
+    //        console.log(e);
+    //   }
+    // }
+
+
     render(){
         return(
             <Tab.Navigator                    
@@ -28,7 +47,7 @@ export default class TabNavigation extends React.Component{
                 <Tab.Screen name="Home" component={Home} 
                         options={{
                             headerTitle:"Header",
-                            tabBarLabel: 'Home',
+                            tabBarLabel: strings.home,
                             tabBarIcon: ({ color }) => (
                               <MaterialCommunityIcons name="home-outline" color={color} size={26} />
                             ),
@@ -39,7 +58,7 @@ export default class TabNavigation extends React.Component{
                 <Tab.Screen name="Cart" component={Cart}
                        options={{
                              tabBarBadge:true,
-                             tabBarLabel: 'Cart',
+                             tabBarLabel: strings.cart,
                              tabBarIcon: ({ color }) => (
                              <MaterialCommunityIcons name="cart-outline" color={color} size={26} />
                              ),
@@ -48,7 +67,7 @@ export default class TabNavigation extends React.Component{
 
                 <Tab.Screen name="Account" component={Account}
                         options={{
-                            tabBarLabel: 'Account',
+                            tabBarLabel: strings.account,
                             tabBarIcon: ({ color }) => (
                               <MaterialCommunityIcons name="account-outline" color={color} size={26} />
                             ),
@@ -59,7 +78,7 @@ export default class TabNavigation extends React.Component{
                 
                 <Tab.Screen name="Settings" component={Settings}
                      options={{
-                           tabBarLabel: 'Settings',
+                           tabBarLabel: strings.settings,
                            tabBarIcon: ({ color }) => (
                            <MaterialCommunityIcons name="cog-outline" color={color} size={26} />
                                                 ),

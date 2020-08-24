@@ -3,6 +3,7 @@ import { Text, ScrollView,TextInput,View,StyleSheet } from 'react-native';
 import OrderCart from "../childComponets/OrderCart.js";
 import {Button  } from "react-native-paper";
 import colors from "../../src/configs/colors.js";
+import strings from "../../src/configs/localization.js";
 //b200f1
 function Cart(props) {
     return (
@@ -10,27 +11,27 @@ function Cart(props) {
       <OrderCart title="One dress" type="Women"/>
       <OrderCart title="Two dress" type="Man"/>
       <View style={{margin:8}}>
-        <Text style={styles.totals}>Totals</Text>
+        <Text style={styles.totals}>{strings.total}</Text>
 
         <View style={styles.subContainer}>
-          <Text style={styles.sub}>Sub Total</Text>
+          <Text style={styles.sub}>{strings.subtotal}</Text>
           <View  style={styles.line}/> 
-          <Text style={styles.price}>$30.00</Text>
+          <Text style={styles.price}>30.00{strings.currency}</Text>
         </View>
 
         <View style={styles.shipContainer}>
-          <Text style={styles.shipp}>Shipping</Text>
+          <Text style={styles.shipp}>{strings.shipping}</Text>
                    <View  style={styles.line}/>      
-          <Text style={styles.price}>$0</Text>
+          <Text style={styles.price}>0{strings.currency}</Text>
         </View>
 
         <View style={styles.vaucherContainer}>
-          <TextInput placeholder="Enter voucher code" style={styles.vaucherIn}/>
-          <Button color="#fff" style={styles.vaucherBtn} >apply</Button>
+          <TextInput placeholder={strings.enterVo} style={styles.vaucherIn}/>
+          <Button color="#fff" style={styles.vaucherBtn} >{strings.apply}</Button>
         </View>
 
         <View style={{flex:1}}>
-          <Button onPress={()=>props.navigation.navigate("CheckoutOne")} color="#fff" style={styles.checkout}>Checkout</Button>
+          <Button onPress={()=>props.navigation.navigate("CheckoutOne")} color="#fff" style={styles.checkout}>{strings.checkout}</Button>
         </View>
 
       </View>

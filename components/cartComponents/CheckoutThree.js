@@ -4,6 +4,7 @@ import { TextInput,Button,IconButton } from "react-native-paper";
 import CheckBox from "@react-native-community/checkbox";
 import Stepper from "../childComponets/Stepper";
 import colors from "../../src/configs/colors.js";
+import strings from "../../src/configs/localization.js";
 
 // const WIDTH=Dimensions.get("window").width-20;
 
@@ -15,7 +16,7 @@ const CheckoutThree =(props)=>{
         <ScrollView style={{flex:1}}>
             <Stepper steps={[{title:"address",checked:true},{title:"payments",checked:true},{title:"summary",checked:true}]}/>
             
-            <Text style={{margin:15,fontSize:16,fontWeight:"700"}}>Summary</Text>
+            <Text style={{margin:15,fontSize:16,fontWeight:"700"}}>{strings.summary}</Text>
                
                 <View style={{flexDirection:"row",justifyContent:"center"}}>
                     <View style={{margin:5}}>
@@ -32,14 +33,14 @@ const CheckoutThree =(props)=>{
 
             <View style={{flex:1,margin:8}}>
                 <View style={styles.checkbox}>
-                        <Text>Shipping address</Text>
+                        <Text>{strings.shippingAd}</Text>
                         <CheckBox onChange={()=>setValue(!val)} tintColors={{true:colors.primary,false:"lightgray"}} value={val}/>
                 </View>
                 <Text style={{margin:15,fontSize:16,fontWeight:"600"}}>12, Bay brook, Sharps rd, Keilar East, Melbourne, Australia</Text>
-                <Button uppercase={false} color={colors.primary} contentStyle={{justifyContent:"flex-start"}}  >Change</Button>
+                <Button uppercase={false} color={colors.primary} contentStyle={{justifyContent:"flex-start"}}  >{strings.change}</Button>
             </View>
 
-            <View style={{flex:1,margin:8}}>
+            {/* <View style={{flex:1,margin:8}}>
                 <View style={styles.checkbox}>
                         <Text>Payout</Text>
                         <CheckBox onChange={()=>setValue(!val)} tintColors={{true:colors.primary,false:"lightgray"}} value={val}/>
@@ -49,14 +50,14 @@ const CheckoutThree =(props)=>{
                      <Image style={{height:15,width:80,margin:8}} source={require("../../android/app/img/uzcard.png")}/>
                 </View>                
                 <Button uppercase={false} color={colors.primary} contentStyle={{justifyContent:"flex-start"}}  >Change</Button>
-            </View>
+            </View> */}
 
            
           
             <View  style={styles.line}/>   
             <View style={{flexDirection:"row"}}>
-                 <Button color="#000" onPress={()=>props.navigation.goBack()} style={styles.back}>Back</Button>
-                 <Button color="#fff" onPress={()=>props.navigation.navigate("Accepted")} style={styles.next}>Pay</Button>
+                 <Button color="#000" onPress={()=>props.navigation.goBack()} style={styles.back}>{strings.back}</Button>
+                 <Button color="#fff" onPress={()=>props.navigation.navigate("Accepted")} style={styles.next}>{strings.pay}</Button>
             </View>
         </ScrollView>
     )

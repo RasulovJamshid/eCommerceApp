@@ -6,90 +6,91 @@ import CardPr from '../childComponets/Card';
 import SearchModal from "../childComponets/SearchModal";
 
 const DATA = [
-    {
-      id: 'bd7acbead-c1b1-46c2-aed5-3ad53abb28ba',
+  {
+    id: 'bd7acbead-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'hand',
+    subTitle:"Bizdan sotib oling, biz ajoyib xizmatlar ko'rsatamiz",
+    price:"59.000"
+  },
+  {
+    id: '3ac68afc-c60d5-48d3-a4f8-fbd91aa97f63',
+    title: 'foot',
+    subTitle:"Kiyim-kechak, futbolkalar, har xil o'lchamdagi narsalar ",
+    price:"61.000"
+
+  },
+  {
+    id: '58694a0f-3dad1-471f-bd96-145571e29d72',
+    title: 'foot',
+    subTitle:"Futbolkalar, har xil o'lchamdagi narsalar ",
+    price:"14.000"
+
+  },
+  {
+      id: 'bd7acbea-c1bs1-46c2-aed5-3ad53abb28ba',
       title: 'hand',
-      subTitle:"awesome services",
-      price:"$59"
+      subTitle:"Bizdan sotib oling, biz ajoyib xizmatlar ko'rsatamiz",
+      price:"32.000"
+
     },
     {
       id: '3ac68afc-c60d5-48d3-a4f8-fbd91aa97f63',
-      title: 'foot',
-      subTitle:"Snickers, Clothes, T-shirts, wide range of sizes ",
-      price:"$61"
+      title: 'hand',
+      subTitle:"Kiyim-kechak, futbolkalar, har xil o'lchamdagi narsalar",
+      price:"45.000"
 
     },
     {
-      id: '58694a0f-3dad1-471f-bd96-145571e29d72',
+      id: '58694a0f-3da1-471f-bd9d6-145571e29d72',
       title: 'foot',
-      subTitle:"Snickers, Clothes, T-shirts, wide range of sizes ",
-      price:"$14"
+      subTitle:"Bizdan sotib oling, biz ajoyib xizmatlar ko'rsatamiz",
+      price:"59.000"
 
     },
     {
-        id: 'bd7acbea-c1bs1-46c2-aed5-3ad53abb28ba',
+      id: 'bd7acbea-c1b1-46c2-daed5-3ad53abb28ba',
+      title: 'hand',
+      subTitle:"Bizdan sotib oling, biz ajoyib xizmatlar ko'rsatamiz",
+      price:"80.000"
+
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd9s1aa97f63',
+      title: 'foot',
+      subTitle:"Bizdan sotib oling, biz ajoyib xizmatlar ko'rsatamiz",
+      price:"100.000"
+
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-1455s71e29d72',
+      title: 'foot',
+      subTitle:"Kiyim-kechak, futbolkalar, har xil o'lchamdagi narsalar",
+      price:"59.000"
+
+    },
+    {
+        id: 'bd7acbea-c1b1-46c2-aded5-3ad53abb28ba',
         title: 'hand',
-        subTitle:"Buy from us, we are providing awesome services",
-        price:"$32"
+        subTitle:"Kiyim-kechak, futbolkalar, har xil o'lchamdagi narsalar",
+        price:"99.000"
 
       },
       {
-        id: '3ac68afc-c60d5-48d3-a4f8-fbd91aa97f63',
+        id: '3ac68afc-c605-48d3-a4df8-fbd91aa97f63',
         title: 'hand',
-        subTitle:"Snickers, Clothes, T-shirts, wide range of sizes .Snickers, Clothes",
-        price:"$45"
+        subTitle:"Futbolkalar, har xil o'lchamdagi narsalar",
+        price:"73.000"
 
       },
       {
-        id: '58694a0f-3da1-471f-bd9d6-145571e29d72',
+        id: '58694a0f-3da1-471f-bd96-1455d71e29d72',
         title: 'foot',
-        subTitle:"Buy from us, we are providing awesome services",
-        price:"$59"
+        subTitle:"Futbolkalar",
+        price:"45.000"
 
       },
-      {
-        id: 'bd7acbea-c1b1-46c2-daed5-3ad53abb28ba',
-        title: 'hand',
-        subTitle:"Buy from us, we are providing awesome services",
-        price:"$80"
+];
 
-      },
-      {
-        id: '3ac68afc-c605-48d3-a4f8-fbd9s1aa97f63',
-        title: 'foot',
-        subTitle:"Buy from us, we are providing awesome services",
-        price:"$100"
-
-      },
-      {
-        id: '58694a0f-3da1-471f-bd96-1455s71e29d72',
-        title: 'foot',
-        subTitle:"Buy from us, we are providing awesome services",
-        price:"$59"
-
-      },
-      {
-          id: 'bd7acbea-c1b1-46c2-aded5-3ad53abb28ba',
-          title: 'hand',
-          subTitle:"Buy from us, we are providing awesome services",
-          price:"$99"
-
-        },
-        {
-          id: '3ac68afc-c605-48d3-a4df8-fbd91aa97f63',
-          title: 'hand',
-          subTitle:"Snickers, Clothes, T-shirts, wide range of sizes .Snickers, Clothes",
-          price:"$73"
-
-        },
-        {
-          id: '58694a0f-3da1-471f-bd96-1455d71e29d72',
-          title: 'foot',
-          subTitle:"Buy from us,",
-          price:"$45"
-
-        },
-  ];
 
 
   

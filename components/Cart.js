@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import CartHeader from "./childComponets/Header.js";
 import  CartMain  from "./cartComponents/CartMain.js";
 import  CheckoutOne  from "./cartComponents/CheckoutOne.js";
-import  CheckoutTwo  from "./cartComponents/CheckoutTwo.js";
+// import  CheckoutTwo  from "./cartComponents/CheckoutTwo.js";
 import  CheckoutThree  from "./cartComponents/CheckoutThree.js";
 import  Accepted  from "./cartComponents/Accepted.js";
 
@@ -53,11 +53,11 @@ function CartScreen() {
         component={CheckoutOne}
         options={{header:CartHeader }}
         />
-        <CartStack.Screen
+        {/* <CartStack.Screen
         name="CheckoutTwo"
         component={CheckoutTwo}
         options={{header:CartHeader }}
-         />
+         /> */}
         <CartStack.Screen
         name="CheckoutThree"
         component={CheckoutThree}
