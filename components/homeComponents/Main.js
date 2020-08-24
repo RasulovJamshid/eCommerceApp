@@ -110,6 +110,7 @@ class Main extends React.Component {
       (<SafeAreaView >
             <SearchModal  />
             <FlatList
+            
             refreshing={false}
             onRefresh={()=>console.log("refresh")}
             initialNumToRender={5}

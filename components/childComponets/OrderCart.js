@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import {Text,View,Image,Dimensions,StyleSheet} from "react-native";
 import {IconButton  } from "react-native-paper";
 import colors from "../../src/configs/colors.js";
-
+import { connect } from "react-redux";
 const WIDTH = Dimensions.get('window').width;
 
 const IconGroup=()=>{
@@ -20,6 +20,16 @@ const IconGroup=()=>{
 
 const OrderCart=(props)=>{
     const [quantity,quntitySet]=useState(1);
+    
+    clearCart=(value)=>{
+        if(value[1]!==undefined){
+         const accumulator=value.slice(1);
+          return accumulator;
+        }   
+        else{
+            return [{id:1,price:"100000",name:"tshirt"}]
+        } 
+      }
     return(
         <View style={styles.container}>
             <Image style={styles.image} source={require("../../android/app/img/foot.jpg")}/>
@@ -37,7 +47,7 @@ const OrderCart=(props)=>{
             </View>
             <View style={styles.right}>
                 <Text style={styles.price}>$15</Text>
-                <IconButton style={styles.delete} onPress={()=>console.log("trash")} icon="delete-outline" color="#fff"/>
+                <IconButton style={styles.delete} onPress={()=>props.decrementCart(clearCart(props.cartQuantity))} icon="delete-outline" color="#fff"/>
             </View>
         </View>
     )
@@ -104,4 +114,12 @@ const styles=StyleSheet.create({
     }
 
 })
-export default OrderCart;
+
+const mapStateToProps=(state)=>({
+    cartQuantity:state.cartCounter,
+  })
+const mapDispatchToProps=(dispatch)=>(
+    {
+  decrementCart:(value)=>dispatch({type:"DECREMENT",payload:value}),
+})
+export default connect(mapStateToProps,mapDispatchToProps)(OrderCart);

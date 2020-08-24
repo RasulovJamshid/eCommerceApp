@@ -4,11 +4,17 @@ import OrderCart from "../childComponets/OrderCart.js";
 import {Button  } from "react-native-paper";
 import colors from "../../src/configs/colors.js";
 import strings from "../../src/configs/localization.js";
+import { connect } from "react-redux";
 //b200f1
 function Cart(props) {
+      
     return (
       <ScrollView >
-      <OrderCart title="One dress" type="Women"/>
+        {console.log(props.cartQuantity)}
+        {props.cartQuantity.map((i,j)=>(
+          <OrderCart key={j} title="One dress" type="Women"/>
+        ))}
+      
       <OrderCart title="Two dress" type="Man"/>
       <View style={{margin:8}}>
         <Text style={styles.totals}>{strings.total}</Text>
@@ -16,13 +22,13 @@ function Cart(props) {
         <View style={styles.subContainer}>
           <Text style={styles.sub}>{strings.subtotal}</Text>
           <View  style={styles.line}/> 
-          <Text style={styles.price}>30.00{strings.currency}</Text>
+          <Text style={styles.price}>300.000 {strings.currency}</Text>
         </View>
 
         <View style={styles.shipContainer}>
           <Text style={styles.shipp}>{strings.shipping}</Text>
                    <View  style={styles.line}/>      
-          <Text style={styles.price}>0{strings.currency}</Text>
+          <Text style={styles.price}>0 {strings.currency}</Text>
         </View>
 
         <View style={styles.vaucherContainer}>
@@ -105,4 +111,8 @@ function Cart(props) {
 
   })
 
-  export default  Cart;
+  const mapStateToProps=(state)=>({
+    cartQuantity:state.cartCounter,
+  })
+  
+  export default  connect(mapStateToProps)(Cart);

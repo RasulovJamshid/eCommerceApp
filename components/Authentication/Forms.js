@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 import { Formik } from 'formik';
 import  * as yup  from 'yup';
 import RNRestart from 'react-native-restart';
-
+import strings from "../../src/configs/localization";
 
 
 const styles=StyleSheet.create({
@@ -20,26 +20,26 @@ const styles=StyleSheet.create({
  const loginValidationSchema = yup.object().shape({
     name: yup
       .string()
-      .required('Please, provide your username!'),
+      .required(strings.usernTitle),
     
     password: yup
       .string()
-      .required(),
+      .required(strings.passwordReq),
   });
 
   const registerValidationSchema = yup.object().shape({
     name: yup
       .string()
-      .required('Please, provide your username!'),
+      .required(strings.usernTitle),
     email: yup
       .string()
       .email()
-      .required(),
+      .required(strings.emailReq),
     password: yup
       .string()
       .min(4,)
-      .max(10, 'Password should not excced 10 chars.')
-      .required(),
+      .max(10, strings.passwordExc)
+      .required(strings.passwordReq),
   });
 
 export const LoginForm= (props) => {
@@ -113,7 +113,7 @@ export const LoginForm= (props) => {
           onChangeText={handleChange('name')}
           onBlur={() => setFieldTouched('name')}
           underlineColor={colors.primary} 
-          label="username"
+          label={strings.usern}
         />
         {touched.name && errors.name &&
           <Text style={{ fontSize: 12, color: '#FF0D10' }}>{errors.name}</Text>
@@ -126,22 +126,21 @@ export const LoginForm= (props) => {
           onBlur={() => setFieldTouched('password')}
           secureTextEntry={true}
           underlineColor={colors.primary} 
-          label="password"
+          label={strings.password}
         />
         {touched.password && errors.password &&
           <Text style={{ fontSize: 12, color: '#FF0D10' }}>{errors.password}</Text>
         }
         {!loginSuccess&&
-          <Text style={{ fontSize: 12, color: '#FF0D10' }}>Iltimos, ma'lumotlarni qayta tekshiring</Text>
+          <Text style={{ fontSize: 12, color: '#FF0D10' }}>{strings.pleaseCheck}</Text>
         }
         <Button
           loading={loginLoading}
-          title='Submit'
           disabled={!isValid}
           onPress={handleSubmit}
           style={styles.login}
           color="#fff"
-        >Login</Button>
+        >{strings.login}</Button>
            
       </React.Fragment>
     )}
@@ -152,21 +151,38 @@ export const LoginForm= (props) => {
 
 
 export const RegisterForm= (props) => {
-  
-  // register=()=>{
-  //   axios.post("https://api.expressmarket.uz/auth/users/",{
-  //     username:"JamshidR",
-  //     email:"rasulov.jamshid2000@gmail.com",
-  //     password:"androidnative",
-  //     type:"customer"
-  //         }).
-  //         then((res)=>{
-  //           console.log(res);
-  //         }).
-  //         catch((e)=>{
-  //           console.log(e);
-  //         })
-  // }
+
+  const [loginSuccess,setSuccess]=useState(true);
+  const [loginLoading,setLoading]=useState(false);
+
+  storeData = async (value) => {
+    try {
+      const jsonData=JSON.stringify(value);
+      await AsyncStorage.setItem('userInfo', jsonData)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  registerRequest=(value)=>{
+    setLoading(true);
+    axios.post("https://api.expressmarket.uz/auth/users/",{
+      username:value.name,
+      email:value.email,
+      password:value.password,
+      type:"customer"
+          }).
+          then((res)=>{
+            setLoading(false);
+            storeData(res.data);
+            props.navigation.navigate("Activation");  // props.authenticate;
+          }).
+          catch((e)=>{
+            setLoading(false);
+            setSuccess(false);
+            console.log(e);
+          })
+  }
   return(                
     <Formik
     
@@ -176,7 +192,7 @@ export const RegisterForm= (props) => {
       email:'',
       password: '' 
     }}
-    onSubmit={props.authenticate}
+    onSubmit={(value)=>registerRequest(value)}
    >
     {({ values, handleChange, errors, setFieldTouched, touched, isValid, handleSubmit }) => (
       <React.Fragment >
@@ -186,7 +202,7 @@ export const RegisterForm= (props) => {
           onChangeText={handleChange('name')}
           onBlur={() => setFieldTouched('name')}
           underlineColor={colors.primary} 
-          label="username"
+          label={strings.usern}
         />
         {touched.name && errors.name &&
           <Text style={{ fontSize: 12, color: '#FF0D10' }}>{errors.name}</Text>
@@ -197,7 +213,7 @@ export const RegisterForm= (props) => {
               onChangeText={handleChange('email')}
               onBlur={() => setFieldTouched('email')}
               underlineColor={colors.primary} 
-              label="E-mail"
+              label={strings.email}
             />
         {touched.email && errors.email &&
           <Text style={{ fontSize: 12, color: '#FF0D10' }}>{errors.email}</Text>
@@ -209,18 +225,21 @@ export const RegisterForm= (props) => {
           onBlur={() => setFieldTouched('password')}
           secureTextEntry={true}
           underlineColor={colors.primary} 
-          label="password"
+          label={strings.password}
         />
         {touched.password && errors.password &&
           <Text style={{ fontSize: 12, color: '#FF0D10' }}>{errors.password}</Text>
         }
+        {!loginSuccess&&
+          <Text style={{ fontSize: 12, color: '#FF0D10' }}>{strings.userSame}</Text>
+        }
         <Button
-          title='Submit'
+          loading={loginLoading}
           disabled={!isValid}
           onPress={handleSubmit}
           style={styles.login}
           color="#fff"
-        >Register</Button>
+        >{strings.register}</Button>
       </React.Fragment>
     )}
   </Formik>                                   

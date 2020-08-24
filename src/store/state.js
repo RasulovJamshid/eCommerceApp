@@ -59,15 +59,30 @@ const mainSearch=(state=false,action)=>{
     }
 }
 
+const cartCounter=(state=[{id:1,price:"100000",name:"tshirt"}],action)=>{
+    switch (action.type) {
+        case "INCREMENT":
+            return [...state, action.payload];
+            break;
+        case "DECREMENT":
+            return action.payload;
+            break;
+        default:
+            return state;
+            break;
+    }
+}
+
 const initialState={
     mainSearch:false,
     isAuthorized:false,
     isFaceBook:false,
     accessToken:"",
-    setLangauge:"uz"
+    setLangauge:"uz",
+    cartCounter:[{id:1,price:"100000",name:"tshirt"}],
 }
 
-let reducers=combineReducers({mainSearch,isAuthorized,isFaceBook,accessToken,setLangauge},initialState);
+let reducers=combineReducers({mainSearch,isAuthorized,isFaceBook,accessToken,setLangauge,cartCounter},initialState);
 
 let store =createStore(reducers);
 

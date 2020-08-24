@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {  StyleSheet,  Text,  View,  TouchableOpacity,  Image,  Alert,  ScrollView,  FlatList,   Dimensions} from 'react-native';
 import ImageView from "react-native-image-viewing";
 import Carousel,{Pagination} from 'react-native-snap-carousel';
-import {  Button} from "react-native-paper";
+import {  Button,IconButton} from "react-native-paper";
+import { connect } from 'react-redux';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH);
@@ -38,7 +39,7 @@ const images = [
   },
 ];
 
-export default class ProductDetail extends Component {
+class ProductDetail extends Component {
   
   
 
@@ -59,11 +60,13 @@ _renderItem = ({item, index}) => {
   );
 }
 
+  
+
   render() {
     return (
-      <View>
+      <View style={{backgroundColor:"#fff"}}>
         <View>
-        <Button style={{position:"absolute",zIndex:1,right:10,top:10}}  icon="magnify-plus-cursor"  onPress={() => this.setState({visible:true})}>zoom</Button>
+        <Button style={{position:"absolute",zIndex:1,right:10,top:10}} color="red"  icon="magnify-plus-cursor"  onPress={() => this.setState({visible:true})}>zoom</Button>
 
           <Carousel
             ref={(c) => { this._sliderRef = c; }}
@@ -76,7 +79,7 @@ _renderItem = ({item, index}) => {
             pagingEnabled={true}
             onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index }) }
           />
-            <View style={{backgroundColor:"white",borderRadius:50,position:"absolute",bottom:20,left:SLIDER_WIDTH*0.33}}>
+            <View style={{backgroundColor:"#fff",borderColor:"red",borderWidth:2,borderRadius:50,position:"absolute",bottom:20,right:10}}>
                 <Pagination
                 dotsLength={ENTRIES1.length}
                 activeDotIndex={this.state.slider1ActiveSlide}
@@ -91,12 +94,25 @@ _renderItem = ({item, index}) => {
               />
           </View>
           </View>
+
           <View style={{margin:5}}>
-            <Text style={{fontSize:14,fontWeight:"600" ,textAlign:"center"}}>
-            Lorem Ipsum is simply dummy text of the printing 
-            and typesetting industry. Lorem Ipsum has been the
-            </Text>
+            <View style={{borderTopWidth:1,borderTopColor:"lightgray",backgroundColor:"#fff",flexDirection:"row",justifyContent:"space-between",margin:5,alignItems:"center"}}>
+               <Text style={{fontSize:18,color:"red"}}>60.000 сум</Text>
+               <IconButton
+                style={{borderWidth:1,borderColor:"red"}}
+                icon="heart"
+                color="red"
+                size={25}
+                onPress={() => console.log('Pressed')}
+              />
+            </View>
+            <View style={{justifyContent:"flex-end"}}>
+            <Button onPress={()=>this.props.incrementCart({id:1,price:"100000",name:"tshirt"})} color="#fff" style={{backgroundColor:"red",borderRadius:10,margin:10}} icon="cart">добавить</Button>
+            </View>
           </View>
+
+
+
         <ImageView
           images={images}
           imageIndex={0}
@@ -108,6 +124,13 @@ _renderItem = ({item, index}) => {
     );
   }
 }
+
+const mapDispatchToProps=(dispatch)=>(
+    {
+  incrementCart:(value)=>dispatch({type:"INCREMENT",payload:value}),
+})
+
+export default connect(null,mapDispatchToProps)(ProductDetail);
 
 const styles = StyleSheet.create({
   root: { flexGrow: 0 },
@@ -148,7 +171,7 @@ paginationDot: {
     width: 10,
     height: 10,
     borderRadius:6,
-    marginHorizontal: 2
+    padding:0
 }
   
 });     

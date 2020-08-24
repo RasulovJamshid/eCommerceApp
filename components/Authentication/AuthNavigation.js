@@ -4,23 +4,13 @@ import {createStackNavigator} from "@react-navigation/stack"
 import {connect  } from "react-redux";
 import Login from "./Login";
 import Signup from "./Signup";
+import Activation from "./Activation";
 import TabNavigation from "../TabNavigation";
 import AsyncStorage from "@react-native-community/async-storage";
-import { NavigationContainer } from '@react-navigation/native';
 
 const Navigation =createStackNavigator();
 
-const linking = {
-    prefixes: ['https://expressmarket.uz/auth'],
-    config: {
-        screens: {
-            Login: {
-              path: '/:uid/:token',
-              
-            },
-          },
-      },
-  };
+
 
   function AuthNavigation (){
     
@@ -42,6 +32,7 @@ const linking = {
             }}}>
             <Navigation.Screen name="Login"  component={Login}/>
             <Navigation.Screen name="Signup" component={Signup}/>
+            <Navigation.Screen name="Activation" component={Activation}/>
         </Navigation.Navigator>
    )
         }

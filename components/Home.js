@@ -41,7 +41,7 @@ let MainHeader=(props)=>{
 
 
 
-const ProductHeader=()=>{
+const ProductHeader=(props)=>{
     
       const _handleSearch = () => console.log('Searching');
     
@@ -49,8 +49,8 @@ const ProductHeader=()=>{
         return(
             <View>
                 <Appbar.Header style={{backgroundColor:"#fff",boxShadow:"none"}}>
-                <Appbar.Action icon="menu" onPress={_handleSearch} />
-                <Appbar.Content  title="Classic"/>
+                <Appbar.Action icon="arrow-left" onPress={()=>props.navigation.goBack()} />
+                <Appbar.Content  title="Product"/>
                 </Appbar.Header>
             </View>
         )

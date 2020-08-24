@@ -7,6 +7,17 @@ import AuthNavigation from "./components/Authentication/AuthNavigation";
 // import AsyncStorage from "@react-native-community/async-storage";
 // import strings from "./src/configs/localization";
 
+const linking = {
+  prefixes: ['https://expressmarket.uz/auth'],
+  config: {
+      screens: {
+        Activation: {
+            path: '/:uid/:token',
+            
+          },
+        },
+    },
+};
 
 class App extends React.Component{
   
@@ -43,8 +54,8 @@ class App extends React.Component{
 //   }
   render(){
   return (
-    <Provider store={store}>
-    <NavigationContainer>
+    <Provider store={store} >
+    <NavigationContainer linking={linking} >
       <AuthNavigation/>
     </NavigationContainer>
     </Provider>

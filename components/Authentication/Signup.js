@@ -5,6 +5,7 @@ import colors from "../../src/configs/colors";
 import {connect} from "react-redux";
 import { StackActions } from '@react-navigation/native';
 import {RegisterForm} from "./Forms";
+import strings from "../../src/configs/localization";
 
 const WIDTH=Dimensions.get("window").width/2;
 
@@ -14,11 +15,11 @@ const Signup = (props)=>{
             <StatusBar backgroundColor="#fff" barStyle="dark-content" />
             <Image style={styles.img} source={require("../../android/app/img/express.png")}/>
             <View style={styles.switchCont}>
-                <Button onPress={()=>props.navigation.dispatch(StackActions.replace("Login"))} color="#000" >Sign in</Button>
-                <Button color="#000" style={styles.switch}>Sign up</Button>
+                <Button onPress={()=>props.navigation.dispatch(StackActions.replace("Login"))} color="#000" >{strings.signin}</Button>
+                <Button color="#000" style={styles.switch}>{strings.signup}</Button>
             </View>
             <View style={{margin:5}}> 
-            <RegisterForm  authenticate={props.authenticate}/>
+            <RegisterForm {...props}  authenticate={props.authenticate}/>
             </View>
             <View style={styles.or}>
               <View  style={styles.line}/>   

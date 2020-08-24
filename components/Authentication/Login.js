@@ -26,10 +26,10 @@ class Login extends React.Component{
         <ScrollView style={{flex:1,}}>
             <StatusBar backgroundColor="#fff" barStyle="dark-content" />
             <Image style={styles.img} source={require("../../android/app/img/express.png")}/>
-            {/* {console.log(this.props.route)} */}
+            {console.log(this.props.route)}
             <View style={styles.switchCont}>
-                <Button color="#000" style={styles.switch}>Sign in</Button>
-                <Button onPress={()=>this.props.navigation.dispatch(StackActions.replace("Signup"))} color="#000">Sign up</Button>
+                <Button color="#000" style={styles.switch}>{strings.signin}</Button>
+                <Button onPress={()=>this.props.navigation.dispatch(StackActions.replace("Signup"))} color="#000">{strings.signup}</Button>
             </View>
             <View style={{margin:10}}>
                 <LoginForm accessToken={this.props.accessToken} authenticate={this.props.authenticate}/>

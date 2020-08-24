@@ -37,7 +37,7 @@ export default strings = new LocalizedStrings({
       youOn:"Номер вашего заказа",
       track:"Отследить заказ",
       summary:"Все",
-      hello:"привет",
+      hello:"Привет",
       women:"Женская одежда",
       accessories:"аксессуары",
       tshirt:"Футболка",
@@ -47,8 +47,20 @@ export default strings = new LocalizedStrings({
       cart:"Корзина",
       account:"Профиль",
       logout:"выйти",
-
-
+      signin:"войти",
+      signup:"регистрация",
+      login:"войти",
+      or:"или",
+      usern:"имя пользователя",
+      password:"пароль",
+      email:"электронная почта",
+      register:"регистрация",
+      usernTitle:"Пожалуйста, укажите ваше имя пользователя!",
+      passwordReq:"пароль - обязательное поле!",
+      passwordExc:"Пароль не должен превышать 10 символов!",
+      pleaseCheck:"Пожалуйста, проверьте информацию занова",
+      emailReq:"электронная почта обязательное поле",
+      userSame:"пользователь с этим адресом электронной почты уже существует или ошибка электронной почты"
   },
     uz:{
       search:"qidirish",
@@ -85,7 +97,7 @@ export default strings = new LocalizedStrings({
       youOn:"Buyurtma raqamingiz",
       track:"Buyurtmani ko'rish",
       summary:"Barchasi",
-      hello:"salom",
+      hello:"Salom",
       women:"ayollar kiyimi",
       accessories:"aksessuarlar",
       tshirt:"futbolka",
@@ -94,8 +106,21 @@ export default strings = new LocalizedStrings({
       home:"Asosiy",
       cart:"Cart",
       account:"Profil",
-      logout:"chiqish"
-
+      logout:"chiqish" ,
+      signin:"kirish",
+      signup:"ro'yxatdan o'tish",
+      login:"kirish",
+      or:"yoki",
+      usern:"foydalanuvchi nomi",
+      password:"parol",
+      email:"elektron pochta",
+      register:"ro'yxatdan o'tish",
+      usernTitle:"Iltimos, foydalanuvchi nomini ko'rsating!!",
+      passwordReq:"parol to'ldirilishi shart bo'lgan maydon!",
+      passwordExc:"Parol 10 ta belgidan oshmasligi kerak.",
+      pleaseCheck:"Iltimos, ma'lumotlarni qayta tekshiring",
+      emailReq:"elektron pochta manzilini kiritish shart",
+      userSame:"ushbu elektron pochtaga ega foydalanuvchi allaqachon mavjud yoki email-da xatolik"
     },
     // en:{
     //     orderH:"Order history",
@@ -141,7 +166,22 @@ export default strings = new LocalizedStrings({
     //     tshirt:"futbolka",
     //     shoes:"oyoq kiyim",
     //     coat:"palto",
-    //     logout:"logout" 
+    //     logout:"logout" ,
+    //     signin:"signin",
+    //     signup:"signup",
+    //     login:"login",
+    //     or:"or",
+    //     usern:"username",
+    //     password:"password",
+    //     email:"email",
+    //     register:"register",
+    //     usernTitle:"Please, provide your username!",
+    //     passwordReq:"password is arequired field!",
+    //     passwordExc:"Password should not excced 10 chars.",
+    //     pleaseCheck:"Please recheck the information",
+    //     emailReq:"email is required field",
+    //     userSame:"user with this email already exists",
+
     //   },
    });
 

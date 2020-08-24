@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View,ScrollView,StyleSheet } from 'react-native';
+import { Text, View,ScrollView,StyleSheet,ActivityIndicator } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { connect } from "react-redux";
 import { Avatar,List,Button } from "react-native-paper";
@@ -30,6 +30,8 @@ class Account extends React.Component{
         first_name:"JR",
         email:"sample"
       },
+      avatarString:"A",
+      isLoading:"true",
     }
   }
 
@@ -51,6 +53,8 @@ class Account extends React.Component{
         this.props.navigation.setOptions({
           title:`${strings.hello}, ${this.state.userInfo.username} !`,
         })
+        this.setState({avatarString:this.state.userInfo.username[0].toUpperCase()});
+        this.setState({isLoading:false})
         }
     } catch(e) {
         console.log(e)
@@ -91,19 +95,18 @@ class Account extends React.Component{
         }
        );
     }
-    // else{
-    //   this.props.navigation.setOptions({
-    //     title:`${strings.hello}, ...!`,
-    //   })
-    // }
   }
+
+  
 
   render(){
     return(
-      <ScrollView style={{flex:1}}>
+      this.state.isLoading?
+      (<View style={{flex: 1,justifyContent: "center"}}><ActivityIndicator size="large" color="red"/></View>)
+      :(<ScrollView style={{flex:1}}>
         
       <View style={styles.avatarContainer}>
-        <Avatar.Text size={75} style={{backgroundColor:colors.primary}} label="JR" /> 
+        <Avatar.Text size={75} style={{backgroundColor:colors.primary}}  label={this.state.avatarString} /> 
         <View style={{margin:15}}>
           <Text style={styles.avatarTitle}>{this.state.userInfo.username}</Text>
           <Text style={styles.avatarSubtitle}>{this.state.userInfo.email}</Text>
@@ -123,7 +126,7 @@ class Account extends React.Component{
             ))}
        </View>
        <Button onPress={this.removeData} color="#fff" style={{margin:10,backgroundColor:colors.primary}}>{strings.logout}</Button>
-      </ScrollView>
+      </ScrollView>)
     )
   }
 
