@@ -60,7 +60,8 @@ export default strings = new LocalizedStrings({
       passwordExc:"Пароль не должен превышать 10 символов!",
       pleaseCheck:"Пожалуйста, проверьте информацию занова",
       emailReq:"электронная почта обязательное поле",
-      userSame:"пользователь с этим адресом электронной почты уже существует или ошибка электронной почты"
+      userSame:"пользователь с этим адресом электронной почты уже существует или ошибка электронной почты",
+      postal:"почтовый индекс"
   },
     uz:{
       search:"qidirish",
@@ -120,7 +121,8 @@ export default strings = new LocalizedStrings({
       passwordExc:"Parol 10 ta belgidan oshmasligi kerak.",
       pleaseCheck:"Iltimos, ma'lumotlarni qayta tekshiring",
       emailReq:"elektron pochta manzilini kiritish shart",
-      userSame:"ushbu elektron pochtaga ega foydalanuvchi allaqachon mavjud yoki email-da xatolik"
+      userSame:"ushbu elektron pochtaga ega foydalanuvchi allaqachon mavjud yoki email-da xatolik",
+      postal:"pochta indeksi"
     },
     // en:{
     //     orderH:"Order history",
@@ -181,7 +183,7 @@ export default strings = new LocalizedStrings({
     //     pleaseCheck:"Please recheck the information",
     //     emailReq:"email is required field",
     //     userSame:"user with this email already exists",
-
+          //  postal:"postal code"
     //   },
    });
 

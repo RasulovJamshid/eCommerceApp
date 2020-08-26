@@ -30,7 +30,7 @@ let MainHeader=(props)=>{
               {/* <Appbar.Action  icon="menu" onPress={_handleMore} /> */}
               <Appbar.Content color="gray" onPress={props.handleSearch}  style={{borderWidth:1,borderColor:"lightgray",borderRadius:15,marginLeft:10}}  title={`${strings.search}...`}/>
               <Appbar.Action icon="magnify"  onPress={props.handleSearch} />
-              <Appbar.Action icon="basket-outline" color="red" onPress={_handleMore} />
+              {/* <Appbar.Action icon="basket-outline" color="red" onPress={_handleMore} /> */}
               </Appbar.Header>
           </View>
       )
@@ -67,8 +67,8 @@ const CategoryHeader=(props)=>{
               <View>
                   <Appbar.Header style={{backgroundColor:"#fff"}} >
                   <Appbar.Action icon="arrow-left" onPress={_goBack} />
-                  <Appbar.Content title="categories"/>
-                  <Appbar.Action icon="magnify" onPress={_handleSearch} />
+                  <Appbar.Content title={strings.categoryies}/>
+                  {/* <Appbar.Action icon="magnify" onPress={_handleSearch} /> */}
                   {/* <Appbar.Action icon="tune"  onPress={_handleMore} /> */}
                   </Appbar.Header>
               </View>

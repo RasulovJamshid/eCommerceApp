@@ -184,7 +184,7 @@ class Listing extends React.Component{
         styles={{drawer:{backgroundColor:"#fafafa"},main:{backfaceVisibility:"hidden"}}}
         negotiatePan={true}
         acceptPan
-        panOpenMask={0.1}
+        panOpenMask={0.7}
         captureGestures
         type="overlay"
         side="right"

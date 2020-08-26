@@ -18,7 +18,23 @@ const CheckoutThree =(props)=>{
             
             <Text style={{margin:15,fontSize:16,fontWeight:"700"}}>{strings.summary}</Text>
                
-                <View style={{flexDirection:"row",justifyContent:"center"}}>
+                <View style={{flexDirection:"row",justifyContent:"center",flexWrap:"wrap"}}>
+                    
+                    <View style={{margin:5}}>
+                        <Image style={{borderRadius:8,width:90,height:90,borderWidth:1,borderColor:"lightgray"}} source={require("../../android/app/img/foot.jpg")}/>
+                        <Text style={{fontWeight:"700"}}>One dress</Text>
+                        <Text style={{color:colors.primary,fontWeight:"700"}}>$15</Text>
+                    </View>
+                    <View style={{margin:5}}>
+                        <Image style={{borderRadius:8,width:90,height:90,borderWidth:1,borderColor:"lightgray"}} source={require("../../android/app/img/nike.jpg")}/>
+                        <Text style={{fontWeight:"700"}}>One dress</Text>
+                        <Text style={{color:colors.primary,fontWeight:"700"}}>$45</Text>
+                    </View>
+                    <View style={{margin:5}}>
+                        <Image style={{borderRadius:8,width:90,height:90,borderWidth:1,borderColor:"lightgray"}} source={require("../../android/app/img/foot.jpg")}/>
+                        <Text style={{fontWeight:"700"}}>One dress</Text>
+                        <Text style={{color:colors.primary,fontWeight:"700"}}>$15</Text>
+                    </View>
                     <View style={{margin:5}}>
                         <Image style={{borderRadius:8,width:90,height:90,borderWidth:1,borderColor:"lightgray"}} source={require("../../android/app/img/foot.jpg")}/>
                         <Text style={{fontWeight:"700"}}>One dress</Text>

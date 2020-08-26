@@ -32,7 +32,9 @@ class Account extends React.Component{
       },
       avatarString:"A",
       isLoading:"true",
-    }
+    };
+    this.getUserInfo();
+
   }
 
   removeData = async () => {
@@ -57,6 +59,7 @@ class Account extends React.Component{
         this.setState({isLoading:false})
         }
     } catch(e) {
+         this.setState({isLoading:false})
         console.log(e)
     }
   }
@@ -87,7 +90,6 @@ class Account extends React.Component{
   };
 
   componentDidMount(){
-    this.getUserInfo();
       if(this.props.isFaceBook){
         AccessToken.getCurrentAccessToken().then(data => {
           const accessToken = data.accessToken.toString();
@@ -101,9 +103,8 @@ class Account extends React.Component{
 
   render(){
     return(
-      this.state.isLoading?
-      (<View style={{flex: 1,justifyContent: "center"}}><ActivityIndicator size="large" color="red"/></View>)
-      :(<ScrollView style={{flex:1}}>
+      
+      <ScrollView style={{flex:1}}>
         
       <View style={styles.avatarContainer}>
         <Avatar.Text size={75} style={{backgroundColor:colors.primary}}  label={this.state.avatarString} /> 
@@ -126,7 +127,7 @@ class Account extends React.Component{
             ))}
        </View>
        <Button onPress={this.removeData} color="#fff" style={{margin:10,backgroundColor:colors.primary}}>{strings.logout}</Button>
-      </ScrollView>)
+      </ScrollView>
     )
   }
 

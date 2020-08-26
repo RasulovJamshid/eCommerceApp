@@ -16,17 +16,16 @@ const CheckoutOne =(props)=>{
         <ScrollView style={{flex:1}}>
             <Stepper steps={[{title:"address",checked:true},{title:"payments",checked:false},{title:"summary",checked:false}]}/>
             
-            <View style={styles.checkbox}>
+            {/* <View style={styles.checkbox}>
                 <CheckBox onChange={()=>setValue(!val)} tintColors={{true:colors.primary,false:"lightgray"}} value={val}/>
                 <Text>{strings.billadd}</Text>
-            </View>
+            </View> */}
             <TextInput selectionColor="lightgray" style={styles.input} label={`${strings.street} 1`}/>
             <TextInput selectionColor="lightgray" style={styles.input}label={`${strings.street} 1`}/>
             <TextInput selectionColor="lightgray" style={styles.input} label={strings.city}/>
-            <View style={{flexDirection:"row",width:WIDTH}}>
-                <TextInput style={styles.inputHalf} label={strings.state}/>
-                <TextInput style={styles.inputHalf} label={strings.country}/>
-            </View>
+            <TextInput style={styles.inputHalf} label={strings.state}/>
+            <TextInput keyboardType="number-pad" textContentType="postalCode" style={styles.inputHalf} label={strings.postal}/>
+            
             <View style={{flexDirection:"row"}}>
                  <Button color="#000" onPress={()=>props.navigation.goBack()} style={styles.back}>{strings.back}</Button>
                  <Button color="#fff" onPress={()=>props.navigation.navigate("CheckoutThree")} style={styles.next}>{strings.next}</Button>

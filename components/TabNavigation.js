@@ -36,12 +36,13 @@ export default class TabNavigation extends React.Component{
 
     render(){
         return(
-            <Tab.Navigator                    
+            <Tab.Navigator     
+                
                     initialRouteName="Home"
                     backBehavior="initialRoute"
-                    activeColor={colors.primary}
+                    activeColor={colors.secondary}
                     inactiveColor="gray"
-                    barStyle={{ backgroundColor: '#fff' }}>
+                    barStyle={{ backgroundColor: '#fff'}}>
                     
 
                 <Tab.Screen name="Home" component={Home} 

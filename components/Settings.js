@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { Text, View,Switch ,Dimensions,Alert,StyleSheet,ScrollView} from 'react-native';
-import { Button } from "react-native-paper";
+import { Button,Snackbar } from "react-native-paper";
 import { createStackNavigator } from "@react-navigation/stack";
 import SettingsHeader from "./childComponets/Header.js";
 import colors from "../src/configs/colors.js";
@@ -31,13 +31,30 @@ const [enabled,setEnabled]=useState(false);
 }
 
 function Settings() {
+  const [visible, setVisible] = React.useState(false);
+
+  const onToggleSnackBar = () => setVisible(!visible);
+
+  const onDismissSnackBar = () => setVisible(false);
     return (
       <ScrollView style={{ flex: 1, margin:15,}}>
         <Text style={{fontSize:20,fontWeight:"700"}}>{strings.settings}!</Text>
         <SwitchPart title={strings.note} content={strings.notetitle}/>
         <SwitchPart title={strings.popup} content={strings.poptitle}/>
         <SwitchPart title={strings.orderH} content={strings.orderhtitle}/>
-        <Button  color="#fff" onPress={()=>Alert.alert("Updated")}  style={styles.button} >{strings.updateSetting}</Button>
+        <Button  color="#fff" onPress={()=>setVisible(true)}  style={styles.button} >{strings.updateSetting}</Button>
+        <Snackbar
+        wrapperStyle={{position:"absolute",top:0}}
+        visible={visible}
+        onDismiss={onDismissSnackBar}
+        action={{
+          label: 'ok',
+          onPress: () => {
+            console.log("snack");
+          },
+        }}>
+        Settings updated.
+      </Snackbar>
       </ScrollView>
     );
   }

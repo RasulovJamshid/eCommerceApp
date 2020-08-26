@@ -1,23 +1,24 @@
 import  React ,{useState} from 'react';
 import { Avatar, Card,Button, Appbar} from 'react-native-paper';
-import {StyleSheet} from "react-native";
+import {StyleSheet,Text,View} from "react-native";
 import strings from "../../src/configs/localization";
 class RightContent extends  React.Component{
   constructor(props){
     super(props);
-    this.state={
-      like:false,
-    }
+    
   }
   render(){
     return (
-      <Avatar.Icon onPress={()=>this.setState({like:!this.state.like})} {...this.props}  
-        size={30} 
+      <View style={{flexDirection:"row",alignItems:"center"}}>
+       <Avatar.Icon  {...this.props}  
+        size={15} 
         style={styles.icon}  
-        backgroundColor={this.state.like?"#fff":"#ff0000"} 
-        color={this.state.like?"#ff0000":"#fff"} 
-        icon="dots-vertical" 
+        backgroundColor="#fff"
+        color="gray" 
+        icon="eye" 
         />
+      <Text>47</Text>
+      </View>
     )
   }
 }
@@ -28,7 +29,7 @@ const randImage=()=>{
     return require('../../android/app/img/nike.jpg')
   } 
   else if(ran<=0.9&&ran>0.75){
-    return require('../../android/app/img/gpu.jpg')
+    return require('../../src/assets/notfound.png')
   }
   else if(ran<=0.75&&ran>0.5){
     return require('../../android/app/img/hand.jpg')
