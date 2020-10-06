@@ -4,7 +4,8 @@
 
 #sample
 
-![Demo](src/assets/Screenshot_2020-08-28-15-24-17-456_com.avalis.jpg ){:height="350px" width="200px"}
+<img src="src/assets/Screenshot_2020-08-28-15-24-17-456_com.avalis.jpg" width="100" >
+
 
 ![Demo](src/assets/Screenshot_2020-08-28-15-24-27-408_com.avalis.jpg ){:height="350px" width="200px"}
 
